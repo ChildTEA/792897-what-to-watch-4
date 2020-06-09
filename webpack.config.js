@@ -9,8 +9,18 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, `public`),
     open: true,
-		inline: false,
     port: 1337,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: `babel-loader`,
+        },
+      }
+    ],
   },
   devtool: `source-map`,
 };

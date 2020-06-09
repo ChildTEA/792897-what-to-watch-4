@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ярослав Смирнов](https://up.htmlacademy.ru/react/4/user/792897).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Ульянов](https://up.htmlacademy.ru/react/4/user/135131).
 
 ---
 

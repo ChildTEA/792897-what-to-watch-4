@@ -1,10 +1,7 @@
 import React from 'react';
 
-
-const Main = (props) => {
-  // eslint-disable-next-line  react/prop-types
-  const {genre, release} = props;
-
+// eslint-disable-next-line  react/prop-types
+const Main = ({genre, release}) => {
   return (
     <React.Fragment>
       <section className="movie-card">

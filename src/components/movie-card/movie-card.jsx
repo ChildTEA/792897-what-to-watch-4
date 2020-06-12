@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 const MovieCard = ({filmTitle}) => {
@@ -14,6 +15,10 @@ const MovieCard = ({filmTitle}) => {
       </h3>
     </article>
   );
+};
+
+MovieCard.propTypes = {
+  filmTitle: PropTypes.PropTypes.string.isRequired,
 };
 
 export default MovieCard;

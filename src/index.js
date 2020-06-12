@@ -4,7 +4,7 @@ import App from './components/app/app.jsx';
 
 const promoFilm = {
   genre: `Drama`,
-  release: `2014`,
+  release: 2014,
 };
 
 const FILMS_TITLES = [

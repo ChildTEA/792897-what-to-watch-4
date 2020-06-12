@@ -1,5 +1,6 @@
-import React from 'react';
 import MovieCard from '../movie-card/movie-card.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {getRandomArrayItem} from '../../utils/common.js';
 
 const MOVIES_TO_RENDER_COUNT = 24;
@@ -139,6 +140,12 @@ const Main = ({
       </div>
     </React.Fragment>
   );
+};
+
+Main.propTypes = {
+  promoFilmGenre: PropTypes.string.isRequired,
+  promoFilmGenreRelease: PropTypes.number.isRequired,
+  filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Main;

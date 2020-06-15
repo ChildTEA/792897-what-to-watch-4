@@ -1,7 +1,6 @@
 import MovieCard from '../movie-card/movie-card.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {getRandomArrayItem} from '../../utils/common.js';
 
 
 const Main = ({
@@ -9,11 +8,11 @@ const Main = ({
   promoFilmGenreRelease,
   filmsTitles
 }) => {
-  const filmsCards = filmsTitles.map((item) => {
+  const filmsCards = filmsTitles.map((title) => {
     return (
       <MovieCard
-        key={item}
-        filmTitle={getRandomArrayItem(filmsTitles)}
+        key={title}
+        filmTitle={title}
       />);
   });
 

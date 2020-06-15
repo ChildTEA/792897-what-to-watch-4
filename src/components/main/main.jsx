@@ -3,22 +3,19 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {getRandomArrayItem} from '../../utils/common.js';
 
-const MOVIES_TO_RENDER_COUNT = 24;
-
 
 const Main = ({
   promoFilmGenre,
   promoFilmGenreRelease,
   filmsTitles
 }) => {
-  const filmsCards = [];
-
-  for (let i = 0; i < MOVIES_TO_RENDER_COUNT; i++) {
-    filmsCards.push(<MovieCard
-      key={i}
-      filmTitle={getRandomArrayItem(filmsTitles)}
-    />);
-  }
+  const filmsCards = filmsTitles.map((item) => {
+    return (
+      <MovieCard
+        key={item}
+        filmTitle={getRandomArrayItem(filmsTitles)}
+      />);
+  });
 
 
   return (

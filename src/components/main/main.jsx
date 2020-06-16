@@ -4,15 +4,17 @@ import React from 'react';
 
 
 const Main = ({
+  filmsTitles,
+  onCardTitleClick,
   promoFilmGenre,
-  promoFilmGenreRelease,
-  filmsTitles
+  promoFilmGenreRelease
 }) => {
   const filmsCards = filmsTitles.map((title) => {
     return (
       <MovieCard
         key={title}
         filmTitle={title}
+        onCardTitleClick={onCardTitleClick}
       />);
   });
 
@@ -139,9 +141,10 @@ const Main = ({
 };
 
 Main.propTypes = {
+  filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmGenreRelease: PropTypes.number.isRequired,
-  filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Main;

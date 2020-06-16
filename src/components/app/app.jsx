@@ -3,12 +3,22 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 
-const App = ({promoFilmGenre, promoFilmGenreRelease, filmsTitles}) => {
+const onCardTitleClick = (evt) => {
+  evt.preventDefault();
+};
+
+
+const App = ({
+  filmsTitles,
+  promoFilmGenre,
+  promoFilmGenreRelease
+}) => {
   return (
     <Main
+      filmsTitles={filmsTitles}
+      onCardTitleClick={onCardTitleClick}
       promoFilmGenre={promoFilmGenre}
       promoFilmGenreRelease={promoFilmGenreRelease}
-      filmsTitles={filmsTitles}
     />
   );
 };

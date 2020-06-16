@@ -17,13 +17,17 @@ const FILMS_TITLES = [
   `Johnny English`,
 ];
 
+const onCardTitleClick = () => {};
+
+
 describe(`<Main />`, () => {
   it(`Should Main render correctly`, () => {
     const tree = renderer
       .create(<Main
+        filmsTitles={FILMS_TITLES}
+        onCardTitleClick={onCardTitleClick}
         promoFilmGenre={PROMO_FILM_GENRE}
         promoFilmGenreRelease={PROMO_FILM_RELEASE}
-        filmsTitles={FILMS_TITLES}
       />)
       .toJSON();
 

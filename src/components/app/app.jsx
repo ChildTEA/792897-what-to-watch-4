@@ -11,21 +11,21 @@ const onCardTitleClick = (evt) => {
 const App = ({
   filmsTitles,
   promoFilmGenre,
-  promoFilmGenreRelease
+  promoFilmRelease
 }) => {
   return (
     <Main
       filmsTitles={filmsTitles}
       onCardTitleClick={onCardTitleClick}
       promoFilmGenre={promoFilmGenre}
-      promoFilmGenreRelease={promoFilmGenreRelease}
+      promoFilmRelease={promoFilmRelease}
     />
   );
 };
 
 App.propTypes = {
   promoFilmGenre: PropTypes.string.isRequired,
-  promoFilmGenreRelease: PropTypes.number.isRequired,
+  promoFilmRelease: PropTypes.number.isRequired,
   filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 

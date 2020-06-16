@@ -27,7 +27,7 @@ describe(`<Main />`, () => {
         filmsTitles={FILMS_TITLES}
         onCardTitleClick={onCardTitleClick}
         promoFilmGenre={PROMO_FILM_GENRE}
-        promoFilmGenreRelease={PROMO_FILM_RELEASE}
+        promoFilmRelease={PROMO_FILM_RELEASE}
       />)
       .toJSON();
 

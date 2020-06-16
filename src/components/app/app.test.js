@@ -22,7 +22,7 @@ describe(`<App />`, () => {
     const tree = renderer
       .create(<App
         promoFilmGenre={PROMO_FILM_GENRE}
-        promoFilmGenreRelease={PROMO_FILM_RELEASE}
+        promoFilmRelease={PROMO_FILM_RELEASE}
         filmsTitles={FILMS_TITLES}
       />)
       .toJSON();

@@ -4,15 +4,17 @@ import React from 'react';
 
 
 const Main = ({
+  filmsTitles,
+  onCardTitleClick,
   promoFilmGenre,
-  promoFilmGenreRelease,
-  filmsTitles
+  promoFilmRelease
 }) => {
   const filmsCards = filmsTitles.map((title) => {
     return (
       <MovieCard
         key={title}
         filmTitle={title}
+        onCardTitleClick={onCardTitleClick}
       />);
   });
 
@@ -52,7 +54,7 @@ const Main = ({
               <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoFilmGenre}</span>
-                <span className="movie-card__year">{promoFilmGenreRelease}</span>
+                <span className="movie-card__year">{promoFilmRelease}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -139,9 +141,10 @@ const Main = ({
 };
 
 Main.propTypes = {
-  promoFilmGenre: PropTypes.string.isRequired,
-  promoFilmGenreRelease: PropTypes.number.isRequired,
   filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
+  promoFilmGenre: PropTypes.string.isRequired,
+  promoFilmRelease: PropTypes.number.isRequired,
 };
 
 export default Main;

@@ -3,19 +3,29 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 
-const App = ({promoFilmGenre, promoFilmGenreRelease, filmsTitles}) => {
+const onCardTitleClick = (evt) => {
+  evt.preventDefault();
+};
+
+
+const App = ({
+  filmsTitles,
+  promoFilmGenre,
+  promoFilmRelease
+}) => {
   return (
     <Main
-      promoFilmGenre={promoFilmGenre}
-      promoFilmGenreRelease={promoFilmGenreRelease}
       filmsTitles={filmsTitles}
+      onCardTitleClick={onCardTitleClick}
+      promoFilmGenre={promoFilmGenre}
+      promoFilmRelease={promoFilmRelease}
     />
   );
 };
 
 App.propTypes = {
   promoFilmGenre: PropTypes.string.isRequired,
-  promoFilmGenreRelease: PropTypes.number.isRequired,
+  promoFilmRelease: PropTypes.number.isRequired,
   filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 

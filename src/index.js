@@ -21,7 +21,7 @@ const FILMS_TITLES = [
 ReactDOM.render(
     <App
       promoFilmGenre={promoFilm.genre}
-      promoFilmGenreRelease={promoFilm.release}
+      promoFilmRelease={promoFilm.release}
       filmsTitles={FILMS_TITLES}
     />,
     document.querySelector(`#root`)

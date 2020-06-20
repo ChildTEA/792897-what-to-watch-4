@@ -6,7 +6,8 @@ import React from 'react';
 const Main = ({
   movies,
   promoFilmGenre,
-  promoFilmRelease
+  promoFilmRelease,
+  onCardTitleClick
 }) => {
   return (
     <React.Fragment>
@@ -104,6 +105,7 @@ const Main = ({
 
           <MoviesList
             movies={movies}
+            onCardTitleClick={onCardTitleClick}
           />
 
           <div className="catalog__more">
@@ -136,6 +138,7 @@ Main.propTypes = {
   })).isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;

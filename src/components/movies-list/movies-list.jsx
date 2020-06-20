@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import React, {PureComponent} from 'react';
 
 
-const onCardTitleClick = (evt) => {
-  evt.preventDefault();
-};
-
-
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
@@ -30,7 +25,7 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onCardTitleClick} = this.props;
     const smallMovieCards = movies.map((movie) => {
       const title = movie.title;
       const preview = movie.smallCardPreview;
@@ -62,6 +57,7 @@ MoviesList.propTypes = {
     title: PropTypes.string.isRequired,
     smallCardPreview: PropTypes.string.isRequired
   })).isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 

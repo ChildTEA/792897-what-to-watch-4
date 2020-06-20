@@ -24,7 +24,6 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
-        onClick={[Function]}
       >
         Title. Part 1
       </a>
@@ -50,7 +49,6 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
-        onClick={[Function]}
       >
         Title. Part 2
       </a>
@@ -76,7 +74,6 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
-        onClick={[Function]}
       >
         Title. Part 3
       </a>
@@ -102,7 +99,6 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
-        onClick={[Function]}
       >
         Title. Part 4
       </a>

@@ -1,4 +1,4 @@
-import MovieCard from '../movie-card/movie-card.jsx';
+import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -11,7 +11,7 @@ const Main = ({
 }) => {
   const filmsCards = filmsTitles.map((title) => {
     return (
-      <MovieCard
+      <SmallMovieCard
         key={title}
         filmTitle={title}
         onCardTitleClick={onCardTitleClick}

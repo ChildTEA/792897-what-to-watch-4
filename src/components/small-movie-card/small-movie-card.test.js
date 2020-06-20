@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MovieCard from './movie-card.jsx';
+import SmallMovieCard from './small-movie-card.jsx';
 
 
 const FILM_TITLE = `Shukan Pokemon hosokyoky`;
@@ -8,10 +8,10 @@ const FILM_TITLE = `Shukan Pokemon hosokyoky`;
 const onCardTitleClick = () => {};
 
 
-describe(`<MovieCard />`, () => {
-  it(`Should MovieCard render correctly`, () => {
+describe(`<SmallMovieCard />`, () => {
+  it(`Should SmallMovieCard render correctly`, () => {
     const tree = renderer
-      .create(<MovieCard
+      .create(<SmallMovieCard
         filmTitle={FILM_TITLE}
         onCardTitleClick={onCardTitleClick}
       />)

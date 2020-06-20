@@ -4,16 +4,20 @@ import React from 'react';
 
 
 const Main = ({
-  filmsTitles,
+  movies,
   onCardTitleClick,
   promoFilmGenre,
   promoFilmRelease
 }) => {
-  const filmsCards = filmsTitles.map((title) => {
+  const smallMovieCards = movies.map((movie) => {
+    const title = movie.title;
+    const preview = movie.smallCardPreview;
+
     return (
       <SmallMovieCard
         key={title}
-        filmTitle={title}
+        title={title}
+        preview={preview}
         onCardTitleClick={onCardTitleClick}
       />);
   });
@@ -114,7 +118,7 @@ const Main = ({
           </ul>
 
           <div className="catalog__movies-list">
-            {filmsCards}
+            {smallMovieCards}
           </div>
 
           <div className="catalog__more">
@@ -141,7 +145,10 @@ const Main = ({
 };
 
 Main.propTypes = {
-  filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    smallCardPreview: PropTypes.string.isRequired
+  })).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,

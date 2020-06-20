@@ -9,13 +9,13 @@ const onCardTitleClick = (evt) => {
 
 
 const App = ({
-  filmsTitles,
+  movies,
   promoFilmGenre,
   promoFilmRelease
 }) => {
   return (
     <Main
-      filmsTitles={filmsTitles}
+      movies={movies}
       onCardTitleClick={onCardTitleClick}
       promoFilmGenre={promoFilmGenre}
       promoFilmRelease={promoFilmRelease}
@@ -24,9 +24,12 @@ const App = ({
 };
 
 App.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    smallCardPreview: PropTypes.string.isRequired
+  })).isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,
-  filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default App;

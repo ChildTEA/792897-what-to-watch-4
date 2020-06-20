@@ -1,28 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/app/app.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/app/app.jsx";
+import {movies, promoMovie} from "./mocks/movies.js";
 
-const promoFilm = {
-  genre: `Drama`,
-  release: 2014,
-};
-
-const FILMS_TITLES = [
-  `Fantastic Beasts`,
-  `Bohemian Rhapsody`,
-  `Macbeth`,
-  `Aviator`,
-  `We need to talk about Kevin`,
-  `What We Do in the Shadows`,
-  `Revenant`,
-  `Johnny English`,
-];
 
 ReactDOM.render(
     <App
-      promoFilmGenre={promoFilm.genre}
-      promoFilmRelease={promoFilm.release}
-      filmsTitles={FILMS_TITLES}
+      movies={movies}
+      promoFilmGenre={promoMovie.genre}
+      promoFilmRelease={promoMovie.release}
     />,
     document.querySelector(`#root`)
 );

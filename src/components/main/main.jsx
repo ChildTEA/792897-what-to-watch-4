@@ -1,6 +1,6 @@
-import MoviesList from '../movies-list/movies-list.jsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import MoviesList from "../movies-list/movies-list.jsx";
+import PropTypes from "prop-types";
+import React from "react";
 
 
 const Main = ({

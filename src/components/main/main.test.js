@@ -1,20 +1,30 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Main from './main.jsx';
+import React from "react";
+import renderer from "react-test-renderer";
+import Main from "./main.jsx";
 
 
-const PROMO_FILM_GENRE = `Drama`;
-const PROMO_FILM_RELEASE = 2010;
+const PROMO_FILM = {
+  genre: `Drama`,
+  release: 2010,
+};
 
-const FILMS_TITLES = [
-  `Fantastic Beasts`,
-  `Bohemian Rhapsody`,
-  `Macbeth`,
-  `Aviator`,
-  `We need to talk about Kevin`,
-  `What We Do in the Shadows`,
-  `Revenant`,
-  `Johnny English`,
+const movies = [
+  {
+    title: `Title. Part 1`,
+    smallCardPreview: `aviator.jpg`,
+  },
+  {
+    title: `Title. Part 2`,
+    smallCardPreview: `aviator.jpg`,
+  },
+  {
+    title: `Title. Part 3`,
+    smallCardPreview: `aviator.jpg`,
+  },
+  {
+    title: `Title. Part 4`,
+    smallCardPreview: `aviator.jpg`,
+  },
 ];
 
 const onCardTitleClick = () => {};
@@ -24,10 +34,10 @@ describe(`<Main />`, () => {
   it(`Should Main render correctly`, () => {
     const tree = renderer
       .create(<Main
-        filmsTitles={FILMS_TITLES}
+        movies={movies}
+        promoFilmGenre={PROMO_FILM.genre}
+        promoFilmRelease={PROMO_FILM.release}
         onCardTitleClick={onCardTitleClick}
-        promoFilmGenre={PROMO_FILM_GENRE}
-        promoFilmRelease={PROMO_FILM_RELEASE}
       />)
       .toJSON();
 

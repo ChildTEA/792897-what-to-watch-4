@@ -8,14 +8,28 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const PROMO_FILM_GENRE = `Drama`;
-const PROMO_FILM_RELEASE = 2010;
+const PROMO_FILM = {
+  genre: `Drama`,
+  release: 2010,
+};
 
-const FILMS_TITLES = [
-  `Fantastic Beasts`,
-  `Bohemian Rhapsody`,
-  `Macbeth`,
-  `Aviator`,
+const movies = [
+  {
+    title: `Title. Part 1`,
+    smallCardPreview: `aviator.jpg`,
+  },
+  {
+    title: `Title. Part 2`,
+    smallCardPreview: `aviator.jpg`,
+  },
+  {
+    title: `Title. Part 3`,
+    smallCardPreview: `aviator.jpg`,
+  },
+  {
+    title: `Title. Part 4`,
+    smallCardPreview: `aviator.jpg`,
+  },
 ];
 
 
@@ -25,10 +39,10 @@ describe(`Main e2e`, () => {
 
     const wrapper = mount(
         <Main
-          filmsTitles={FILMS_TITLES}
+          movies={movies}
+          promoFilmGenre={PROMO_FILM.genre}
+          promoFilmRelease={PROMO_FILM.release}
           onCardTitleClick={onCardTitleClick}
-          promoFilmGenre={PROMO_FILM_GENRE}
-          promoFilmRelease={PROMO_FILM_RELEASE}
         />
     );
 

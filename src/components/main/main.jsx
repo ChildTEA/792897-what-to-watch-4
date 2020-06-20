@@ -5,7 +5,6 @@ import React from 'react';
 
 const Main = ({
   movies,
-  onCardTitleClick,
   promoFilmGenre,
   promoFilmRelease
 }) => {
@@ -105,7 +104,6 @@ const Main = ({
 
           <MoviesList
             movies={movies}
-            onCardTitleClick={onCardTitleClick}
           />
 
           <div className="catalog__more">
@@ -138,7 +136,6 @@ Main.propTypes = {
   })).isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;

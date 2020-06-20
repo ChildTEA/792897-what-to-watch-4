@@ -5,10 +5,14 @@ import PropTypes from 'prop-types';
 const MovieCard = ({
   title,
   preview,
-  onCardTitleClick
+  onCardTitleClick,
+  onCardHover
 }) => {
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article
+      onMouseOver={onCardHover}
+      className="small-movie-card catalog__movies-card"
+    >
       <div className="small-movie-card__image">
         <img src={`img/${preview}`} alt={title} width="280" height="175" />
       </div>
@@ -30,6 +34,7 @@ MovieCard.propTypes = {
   title: PropTypes.PropTypes.string.isRequired,
   preview: PropTypes.PropTypes.string.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
 };
 
 

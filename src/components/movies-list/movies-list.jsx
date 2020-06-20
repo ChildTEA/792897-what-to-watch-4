@@ -1,31 +1,60 @@
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 
-const MoviesList = ({
-  movies,
-  onCardTitleClick
-}) => {
-  const smallMovieCards = movies.map((movie) => {
-    const title = movie.title;
-    const preview = movie.smallCardPreview;
+const onCardTitleClick = (evt) => {
+  evt.preventDefault();
+};
+
+
+class MoviesList extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeMovieCard: null,
+    };
+
+    this._onCardHover = this._onCardHover.bind(this);
+  }
+
+  _onCardHover(evt) {
+    const target = evt.target;
+
+    this.setState(() => {
+      return {
+        activeMovieCard: target,
+      };
+    });
+  }
+
+  render() {
+    const {movies} = this.props;
+    const smallMovieCards = movies.map((movie) => {
+      const title = movie.title;
+      const preview = movie.smallCardPreview;
+
+      return (
+        <SmallMovieCard
+          key={title}
+          title={title}
+          preview={preview}
+          onCardTitleClick={onCardTitleClick}
+          onCardHover={this._onCardHover}
+        />
+      );
+    });
 
     return (
-      <SmallMovieCard
-        key={title}
-        title={title}
-        preview={preview}
-        onCardTitleClick={onCardTitleClick}
-      />);
-  });
-
-  return (<React.Fragment>
-    <div className="catalog__movies-list">
-      {smallMovieCards}
-    </div>
-  </React.Fragment>);
-};
+      <React.Fragment>
+        <div className="catalog__movies-list">
+          {smallMovieCards}
+        </div>
+      </React.Fragment>
+    );
+  }
+}
 
 
 MoviesList.propTypes = {
@@ -33,7 +62,6 @@ MoviesList.propTypes = {
     title: PropTypes.string.isRequired,
     smallCardPreview: PropTypes.string.isRequired
   })).isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 

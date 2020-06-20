@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 
-const onCardTitleClick = (evt) => {
-  evt.preventDefault();
-};
-
-
 const App = ({
   movies,
   promoFilmGenre,
@@ -16,7 +11,6 @@ const App = ({
   return (
     <Main
       movies={movies}
-      onCardTitleClick={onCardTitleClick}
       promoFilmGenre={promoFilmGenre}
       promoFilmRelease={promoFilmRelease}
     />

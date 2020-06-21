@@ -28,7 +28,7 @@ class MoviesList extends PureComponent {
     const {movies, onCardTitleClick} = this.props;
     const smallMovieCards = movies.map((movie) => {
       const title = movie.title;
-      const preview = movie.smallCardPreview;
+      const preview = movie.preview;
 
       return (
         <SmallMovieCard

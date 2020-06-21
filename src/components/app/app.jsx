@@ -5,11 +5,6 @@ import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 
-const onCardTitleClick = (evt) => {
-  evt.preventDefault();
-};
-
-
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -17,6 +12,18 @@ class App extends PureComponent {
     this.state = {
       showingPage: `index`,
     };
+
+    this._onCardTitleClick = this._onCardTitleClick.bind(this);
+  }
+
+  _onCardTitleClick(evt) {
+    evt.preventDefault();
+
+    const id = evt.target.dataset.id;
+
+    this.setState({
+      showingPage: id,
+    });
   }
 
   _renderApp() {
@@ -29,7 +36,7 @@ class App extends PureComponent {
           movies={movies}
           promoFilmGenre={promoFilmGenre}
           promoFilmRelease={promoFilmRelease}
-          onCardTitleClick={onCardTitleClick}
+          onCardTitleClick={this._onCardTitleClick}
         />
       );
     }

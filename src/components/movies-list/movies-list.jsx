@@ -11,10 +11,10 @@ class MoviesList extends PureComponent {
       activeMovieCard: null,
     };
 
-    this._onCardHover = this._onCardHover.bind(this);
+    this.onCardHover = this.onCardHover.bind(this);
   }
 
-  _onCardHover(evt) {
+  onCardHover(evt) {
     const target = evt.target;
 
     this.setState(() => {
@@ -36,7 +36,7 @@ class MoviesList extends PureComponent {
           title={title}
           preview={preview}
           onCardTitleClick={onCardTitleClick}
-          onCardHover={this._onCardHover}
+          onCardHover={this.onCardHover}
         />
       );
     });

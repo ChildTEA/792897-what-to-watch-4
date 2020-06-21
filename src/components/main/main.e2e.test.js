@@ -34,7 +34,7 @@ const movies = [
 
 
 describe(`Main e2e`, () => {
-  it(`Should call onCardTitleClick 1 time`, () => {
+  it(`Should call onCardTitleClick one time`, () => {
     const onCardTitleClick = jest.fn();
 
     const wrapper = mount(

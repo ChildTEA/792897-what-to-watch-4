@@ -16,14 +16,12 @@ const MOVIE = {
 
 describe(`SmallMovieCard e2e`, () => {
   it(`Should return SmallMovieCard element`, () => {
-    const movieTitle = MOVIE.title;
-    const cardPreview = MOVIE.smallCardPreview;
     const onCardHover = jest.fn();
 
     const wrapper = shallow(
         <SmallMovieCard
-          title={movieTitle}
-          preview={cardPreview}
+          title={MOVIE.title}
+          preview={MOVIE.smallCardPreview}
           onCardTitleClick={() => {}}
           onCardHover={onCardHover}
         />
@@ -32,5 +30,24 @@ describe(`SmallMovieCard e2e`, () => {
     wrapper.simulate(`mouseover`);
 
     expect(onCardHover).toHaveBeenCalledTimes(1);
+  });
+
+  it(`Should call onCardTitleClick one time`, () => {
+    const onCardTitleClick = jest.fn();
+
+    const wrapper = shallow(
+        <SmallMovieCard
+          title={MOVIE.title}
+          preview={MOVIE.smallCardPreview}
+          onCardTitleClick={onCardTitleClick}
+          onCardHover={() => {}}
+        />
+    );
+
+    const title = wrapper.find(`.small-movie-card__link`);
+
+    title.simulate(`click`);
+
+    expect(onCardTitleClick).toHaveBeenCalledTimes(1);
   });
 });

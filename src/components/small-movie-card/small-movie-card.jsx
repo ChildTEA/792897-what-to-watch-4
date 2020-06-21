@@ -10,7 +10,7 @@ const MovieCard = ({
 }) => {
   return (
     <article
-      onMouseOver={onCardHover}
+      onMouseEnter={onCardHover}
       className="small-movie-card catalog__movies-card"
     >
       <div className="small-movie-card__image">

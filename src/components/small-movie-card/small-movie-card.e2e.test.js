@@ -27,7 +27,7 @@ describe(`SmallMovieCard e2e`, () => {
         />
     );
 
-    wrapper.simulate(`mouseover`);
+    wrapper.simulate(`mouseenter`);
 
     expect(onCardHover).toHaveBeenCalledTimes(1);
   });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MovieCard /> Should MovieCard render correctly 1`] = `
+exports[`<SmallMovieCard /> Should SmallMovieCard render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
 >
@@ -8,9 +8,9 @@ exports[`<MovieCard /> Should MovieCard render correctly 1`] = `
     className="small-movie-card__image"
   >
     <img
-      alt="Shukan Pokemon hosokyoky"
+      alt="Title. Part 1"
       height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      src="img/aviator.jpg"
       width="280"
     />
   </div>
@@ -22,7 +22,7 @@ exports[`<MovieCard /> Should MovieCard render correctly 1`] = `
       href="movie-page.html"
       onClick={[Function]}
     >
-      Shukan Pokemon hosokyoky
+      Title. Part 1
     </a>
   </h3>
 </article>

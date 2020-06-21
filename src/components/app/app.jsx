@@ -1,6 +1,6 @@
-import Main from '../main/main.jsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import Main from "../main/main.jsx";
+import PropTypes from "prop-types";
+import React from "react";
 
 
 const onCardTitleClick = (evt) => {
@@ -9,24 +9,27 @@ const onCardTitleClick = (evt) => {
 
 
 const App = ({
-  filmsTitles,
+  movies,
   promoFilmGenre,
   promoFilmRelease
 }) => {
   return (
     <Main
-      filmsTitles={filmsTitles}
-      onCardTitleClick={onCardTitleClick}
+      movies={movies}
       promoFilmGenre={promoFilmGenre}
       promoFilmRelease={promoFilmRelease}
+      onCardTitleClick={onCardTitleClick}
     />
   );
 };
 
 App.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    smallCardPreview: PropTypes.string.isRequired
+  })).isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,
-  filmsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default App;

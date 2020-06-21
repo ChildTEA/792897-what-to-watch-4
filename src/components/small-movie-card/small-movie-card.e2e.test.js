@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import SmallMovieCard from "./small-movie-card.jsx";
+import {shortMovieDescription} from "../../const/tests.js";
 
 
 Enzyme.configure({
@@ -9,10 +10,8 @@ Enzyme.configure({
 });
 
 
-const MOVIE = {
-  title: `Title. Part 1`,
-  smallCardPreview: `aviator.jpg`,
-};
+const {id, title, preview} = shortMovieDescription;
+
 
 describe(`SmallMovieCard e2e`, () => {
   it(`Should return SmallMovieCard element`, () => {
@@ -20,8 +19,9 @@ describe(`SmallMovieCard e2e`, () => {
 
     const wrapper = shallow(
         <SmallMovieCard
-          title={MOVIE.title}
-          preview={MOVIE.smallCardPreview}
+          id={id}
+          title={title}
+          preview={preview}
           onCardTitleClick={() => {}}
           onCardHover={onCardHover}
         />
@@ -37,16 +37,17 @@ describe(`SmallMovieCard e2e`, () => {
 
     const wrapper = shallow(
         <SmallMovieCard
-          title={MOVIE.title}
-          preview={MOVIE.smallCardPreview}
+          id={id}
+          title={title}
+          preview={preview}
           onCardTitleClick={onCardTitleClick}
           onCardHover={() => {}}
         />
     );
 
-    const title = wrapper.find(`.small-movie-card__link`);
+    const MovieCardTitle = wrapper.find(`.small-movie-card__link`);
 
-    title.simulate(`click`);
+    MovieCardTitle.simulate(`click`);
 
     expect(onCardTitleClick).toHaveBeenCalledTimes(1);
   });

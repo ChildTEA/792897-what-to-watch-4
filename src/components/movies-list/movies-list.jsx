@@ -27,12 +27,14 @@ class MoviesList extends PureComponent {
   render() {
     const {movies, onCardTitleClick} = this.props;
     const smallMovieCards = movies.map((movie) => {
+      const id = movie.id;
       const title = movie.title;
       const preview = movie.preview;
 
       return (
         <SmallMovieCard
           key={title}
+          id={id}
           title={title}
           preview={preview}
           onCardTitleClick={onCardTitleClick}

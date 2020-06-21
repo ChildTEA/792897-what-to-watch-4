@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
+import {fullMoviesDescriptions} from "../../const/tests.js";
 
 
 const PROMO_FILM = {
@@ -8,24 +9,6 @@ const PROMO_FILM = {
   release: 2010,
 };
 
-const movies = [
-  {
-    title: `Title. Part 1`,
-    smallCardPreview: `aviator.jpg`,
-  },
-  {
-    title: `Title. Part 2`,
-    smallCardPreview: `aviator.jpg`,
-  },
-  {
-    title: `Title. Part 3`,
-    smallCardPreview: `aviator.jpg`,
-  },
-  {
-    title: `Title. Part 4`,
-    smallCardPreview: `aviator.jpg`,
-  },
-];
 
 describe(`<App />`, () => {
   it(`Render App`, () => {
@@ -33,7 +16,7 @@ describe(`<App />`, () => {
       .create(<App
         promoFilmGenre={PROMO_FILM.genre}
         promoFilmRelease={PROMO_FILM.release}
-        movies={movies}
+        movies={fullMoviesDescriptions}
       />)
       .toJSON();
 

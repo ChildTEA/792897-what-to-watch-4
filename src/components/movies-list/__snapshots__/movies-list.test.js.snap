@@ -6,15 +6,15 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Title. Part 1"
+        alt="Title 1"
         height="175"
-        src="img/aviator.jpg"
+        src="img/awesome-preview.jpg"
         width="280"
       />
     </div>
@@ -23,23 +23,24 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
+        data-id="0001"
         href="movie-page.html"
       >
-        Title. Part 1
+        Title 1
       </a>
     </h3>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Title. Part 2"
+        alt="Title 2"
         height="175"
-        src="img/aviator.jpg"
+        src="img/awesome-preview.jpg"
         width="280"
       />
     </div>
@@ -48,23 +49,24 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
+        data-id="0002"
         href="movie-page.html"
       >
-        Title. Part 2
+        Title 2
       </a>
     </h3>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Title. Part 3"
+        alt="Title 3"
         height="175"
-        src="img/aviator.jpg"
+        src="img/awesome-preview.jpg"
         width="280"
       />
     </div>
@@ -73,23 +75,24 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
+        data-id="0003"
         href="movie-page.html"
       >
-        Title. Part 3
+        Title 3
       </a>
     </h3>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Title. Part 4"
+        alt="Title 4"
         height="175"
-        src="img/aviator.jpg"
+        src="img/awesome-preview.jpg"
         width="280"
       />
     </div>
@@ -98,9 +101,10 @@ exports[`<MoviesList /> Should MoviesList render correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
+        data-id="0004"
         href="movie-page.html"
       >
-        Title. Part 4
+        Title 4
       </a>
     </h3>
   </article>

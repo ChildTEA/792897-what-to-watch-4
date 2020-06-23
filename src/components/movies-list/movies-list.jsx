@@ -27,12 +27,14 @@ class MoviesList extends PureComponent {
   render() {
     const {movies, onCardTitleClick} = this.props;
     const smallMovieCards = movies.map((movie) => {
+      const id = movie.id;
       const title = movie.title;
-      const preview = movie.smallCardPreview;
+      const preview = movie.preview;
 
       return (
         <SmallMovieCard
           key={title}
+          id={id}
           title={title}
           preview={preview}
           onCardTitleClick={onCardTitleClick}
@@ -54,8 +56,15 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    smallCardPreview: PropTypes.string.isRequired
+    director: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    runTime: PropTypes.string.isRequired,
+    release: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf[PropTypes.string.isRequired],
+    preview: PropTypes.string.isRequired,
   })).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
 };

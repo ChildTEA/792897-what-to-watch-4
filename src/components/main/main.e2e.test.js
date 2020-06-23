@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main.jsx";
+import {fullMoviesDescriptions} from "../../const/tests.js";
 
 
 Enzyme.configure({
@@ -13,25 +14,6 @@ const PROMO_FILM = {
   release: 2010,
 };
 
-const movies = [
-  {
-    title: `Title. Part 1`,
-    smallCardPreview: `aviator.jpg`,
-  },
-  {
-    title: `Title. Part 2`,
-    smallCardPreview: `aviator.jpg`,
-  },
-  {
-    title: `Title. Part 3`,
-    smallCardPreview: `aviator.jpg`,
-  },
-  {
-    title: `Title. Part 4`,
-    smallCardPreview: `aviator.jpg`,
-  },
-];
-
 
 describe(`Main e2e`, () => {
   it(`Should call onCardTitleClick one time`, () => {
@@ -39,7 +21,7 @@ describe(`Main e2e`, () => {
 
     const wrapper = mount(
         <Main
-          movies={movies}
+          movies={fullMoviesDescriptions}
           promoFilmGenre={PROMO_FILM.genre}
           promoFilmRelease={PROMO_FILM.release}
           onCardTitleClick={onCardTitleClick}

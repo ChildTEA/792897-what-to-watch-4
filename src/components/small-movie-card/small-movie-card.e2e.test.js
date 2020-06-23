@@ -45,9 +45,9 @@ describe(`SmallMovieCard e2e`, () => {
         />
     );
 
-    const MovieCardTitle = wrapper.find(`.small-movie-card__link`);
+    const movieCardTitle = wrapper.find(`.small-movie-card__link`);
 
-    MovieCardTitle.simulate(`click`);
+    movieCardTitle.simulate(`click`);
 
     expect(onCardTitleClick).toHaveBeenCalledTimes(1);
   });

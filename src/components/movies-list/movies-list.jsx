@@ -17,11 +17,15 @@ class MoviesList extends PureComponent {
   }
 
   onCardMouseEnter(movieID) {
-    this.setState({activeMovieID: movieID});
+    this.setState(() => ({
+      activeMovieID: movieID
+    }));
   }
 
   onCardMouseLeave() {
-    this.setState({activeMovieID: null});
+    this.setState(() => ({
+      activeMovieID: null
+    }));
   }
 
   render() {

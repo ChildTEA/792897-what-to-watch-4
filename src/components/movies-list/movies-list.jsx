@@ -63,6 +63,7 @@ MoviesList.propTypes = {
     poster: PropTypes.string.isRequired,
     runTime: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf[PropTypes.string.isRequired],
     preview: PropTypes.string.isRequired,
   })).isRequired,

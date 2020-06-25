@@ -10,7 +10,7 @@ class VideoPlayer extends PureComponent {
     this._videoDelayPlayTimer = null;
 
     this.state = {
-      isPlayng: this.props.isPlaying,
+      isPlaying: this.props.isPlaying,
     };
   }
 
@@ -28,10 +28,15 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
+    this.setState({isPlaying: this.props.isPlaying});
     const video = this._videoRef.current;
 
+    const onPlay = () => {
+      video.play();
+    };
+
     if (this.state.isPlaying) {
-      this._videoDelayPlayTimer = setTimeout(() => video.play(), 1000);
+      this._videoDelayPlayTimer = setTimeout(onPlay, 1000);
     } else {
       if (this._videoDelayPlayTimer) {
         clearTimeout(this._videoDelayPlayTimer);
@@ -49,7 +54,7 @@ class VideoPlayer extends PureComponent {
         height="175"
         autoPlay={false}
         loop={true}
-        muted="muted"
+        muted={true}
         poster={`img/${this.props.preview}`}
       >
       </video>

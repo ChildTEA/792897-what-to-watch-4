@@ -9,24 +9,19 @@ class MoviesList extends PureComponent {
     super(props);
 
     this.state = {
-      activeMovieCard: null,
+      activeMovieID: null,
     };
 
-    this.onCardHover = this.onCardHover.bind(this);
+    this.onCardMouseEnter = this.onCardMouseEnter.bind(this);
+    this.onCardMouseLeave = this.onCardMouseLeave.bind(this);
   }
 
-  onCardHover(evt) {
-    const target = evt.target;
-
-    this.setState(() => {
-      return {
-        activeMovieCard: target,
-      };
-    });
+  onCardMouseEnter(movieID) {
+    this.setState({activeMovieID: movieID});
   }
 
-  onMouseLeave() {
-    return ``;
+  onCardMouseLeave() {
+    this.setState({activeMovieID: null});
   }
 
   render() {
@@ -36,6 +31,7 @@ class MoviesList extends PureComponent {
       const title = movie.title;
       const preview = movie.preview;
       const videoPreviewSrc = movie.videoPreviewSrc;
+      const activeMovieID = this.state.activeMovieID;
 
       return (
         <SmallMovieCard
@@ -44,8 +40,10 @@ class MoviesList extends PureComponent {
           title={title}
           preview={preview}
           videoPreviewSrc={videoPreviewSrc}
+          isPlaying={activeMovieID === id}
           onCardTitleClick={onCardTitleClick}
-          onCardHover={this.onCardHover}
+          onCardMouseEnter={this.onCardMouseEnter}
+          onCardMouseLeave={this.onCardMouseLeave}
         />
       );
     });

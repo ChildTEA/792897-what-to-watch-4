@@ -5,10 +5,6 @@ import VideoPlayer from "../video-player/video-player.jsx";
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isPlaying: false,
-    };
   }
 
   render() {
@@ -17,32 +13,26 @@ class MovieCard extends PureComponent {
       title,
       preview,
       videoPreviewSrc,
+      isPlaying,
       onCardTitleClick,
-      // onCardHover,
-      // onMouseLeave,
+      onCardMouseEnter,
+      onCardMouseLeave,
     } = this.props;
 
     return (
       <article
-        onMouseEnter={() => this.setState({isPlaying: true})}
-        onMouseLeave={() => this.setState({isPlaying: false})}
+        onMouseEnter={() => {
+          onCardMouseEnter(id);
+        }}
+        onMouseLeave={onCardMouseLeave}
         className="small-movie-card catalog__movies-card"
       >
         <div className="small-movie-card__image">
           <VideoPlayer
-            isPlaying={this.state.isPlaying}
+            isPlaying={isPlaying}
             preview={preview}
             videoPreviewSrc={videoPreviewSrc}
           />
-
-          {/*
-          <img
-            src={`img/${preview}`}
-            alt={title}
-            width="280"
-            height="175"
-          />
-          */}
         </div>
         <h3 className="small-movie-card__title">
           <a
@@ -65,9 +55,10 @@ MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   preview: PropTypes.PropTypes.string.isRequired,
   videoPreviewSrc: PropTypes.string.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  // onCardHover: PropTypes.func.isRequired,
-  // onMouseLeave: PropTypes.func.isRequired,
+  onCardMouseEnter: PropTypes.func.isRequired,
+  onCardMouseLeave: PropTypes.func.isRequired,
 };
 
 

@@ -7,9 +7,9 @@ const movies = [
     poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     runTime: `1h 29m`,
     release: `2010`,
-    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     starring: [`Jim Carrey`, `Leonardo DiCaprio`, `Emma Stone`, `Emma Watson`, `David Duchovny`, `Gillian Anderson`, `Angelina Jolie`, `Brad Pitt`],
     preview: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0002`,
@@ -19,9 +19,9 @@ const movies = [
     poster: `bohemian-rhapsody.jpg`,
     runTime: `43m`,
     release: `2002`,
-    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     starring: [`Emma Stone`, `David Duchovny`, `Angelina Jolie`, `Brad Pitt`],
     preview: `bohemian-rhapsody.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0003`,
@@ -31,9 +31,9 @@ const movies = [
     poster: `macbeth.jpg`,
     runTime: `1h 15m`,
     release: `2011`,
-    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     starring: [`Jim Carrey`, `Gillian Anderson`, `Brad Pitt`],
     preview: `macbeth.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0004`,
@@ -43,9 +43,9 @@ const movies = [
     poster: `aviator.jpg`,
     runTime: `3h 13m`,
     release: `2007`,
-    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     starring: [`Emma Watson`, `Angelina Jolie`, `Brad Pitt`],
     preview: `aviator.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0005`,
@@ -55,9 +55,9 @@ const movies = [
     poster: `we-need-to-talk-about-kevin.jpg`,
     runTime: `52m`,
     release: `2012`,
-    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     starring: [`Emma Stone`, `Gillian Anderson`, `Angelina Jolie`],
     preview: `we-need-to-talk-about-kevin.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0006`,
@@ -67,9 +67,9 @@ const movies = [
     poster: `what-we-do-in-the-shadows.jpg`,
     runTime: `1h 51m`,
     release: `2080`,
-    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     starring: [`Jim Carrey`, `Leonardo DiCaprio`, `Brad Pitt`],
     preview: `what-we-do-in-the-shadows.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0007`,
@@ -79,9 +79,9 @@ const movies = [
     poster: `revenant.jpg`,
     runTime: `2h 41m`,
     release: `2001`,
-    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     starring: [`Jim Carrey`, `Gillian Anderson`, `Angelina Jolie`],
     preview: `revenant.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0008`,
@@ -91,9 +91,9 @@ const movies = [
     poster: `johnny-english.jpg`,
     runTime: `1h 26m`,
     release: `1981`,
-    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     starring: [`Jim Carrey`, `Leonardo DiCaprio`],
     preview: `johnny-english.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
 ];
 

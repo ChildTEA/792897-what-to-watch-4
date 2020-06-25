@@ -1,6 +1,7 @@
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import React from "react";
+import {moviesType} from "../../types/types.js";
 
 
 const Main = ({
@@ -132,18 +133,7 @@ const Main = ({
 };
 
 Main.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    runTime: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf[PropTypes.string.isRequired],
-    preview: PropTypes.string.isRequired,
-  })).isRequired,
+  movies: moviesType.isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,

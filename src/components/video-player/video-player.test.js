@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import VideoPlayer from "./video-player.jsx";
-import {shortMovieDescription} from "../../const/tests.js"
+import {shortMovieDescription} from "../../const/tests.js";
 
 
 const isPlaying = false;

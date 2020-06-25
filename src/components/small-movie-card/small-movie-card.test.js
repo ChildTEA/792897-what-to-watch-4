@@ -4,20 +4,28 @@ import SmallMovieCard from "./small-movie-card.jsx";
 import {shortMovieDescription} from "../../const/tests.js";
 
 
-const {id, title, preview} = shortMovieDescription;
-
-const onCardTitleClick = () => {};
+const {id, title, preview, videoPreviewSrc} = shortMovieDescription;
+const isPlaying = false;
 
 
 describe(`<SmallMovieCard />`, () => {
   it(`Should SmallMovieCard render correctly`, () => {
     const tree = renderer
-      .create(<SmallMovieCard
-        id={id}
-        title={title}
-        preview={preview}
-        onCardTitleClick={onCardTitleClick}
-      />)
+      .create((
+        <SmallMovieCard
+          id={id}
+          title={title}
+          preview={preview}
+          isPlaying={isPlaying}
+          videoPreviewSrc={videoPreviewSrc}
+          onCardTitleClick={() => {}}
+          onCardMouseEnter={() => {}}
+          onCardMouseLeave={() => {}}
+        />), {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

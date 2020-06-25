@@ -181,7 +181,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Awesome title
+            Title 1
           </h2>
           <p
             className="movie-card__meta"
@@ -189,12 +189,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Magic tutorial
+              Genre 1
             </span>
             <span
               className="movie-card__year"
             >
-              2081
+              2000
             </span>
           </p>
           <div
@@ -255,7 +255,7 @@ Array [
         >
           <img
             height="327"
-            src="img/awesome-preview.jpg"
+            src="img/awesome-poster.jpg"
             width="218"
           />
         </div>
@@ -317,7 +317,7 @@ Array [
                 <span
                   className="movie-card__details-value"
                 >
-                  Awesome dude
+                  Director 1
                 </span>
               </p>
               <p
@@ -331,9 +331,8 @@ Array [
                 <span
                   className="movie-card__details-value"
                 >
-                  Aragorn, 
-Frodo Beggins, 
-Gendalf A. Gray
+                  Awesome Actor, 
+Awesome Actress
                 </span>
               </p>
             </div>
@@ -351,7 +350,7 @@ Gendalf A. Gray
                 <span
                   className="movie-card__details-value"
                 >
-                  1h 00m
+                  1h 0m
                 </span>
               </p>
               <p
@@ -365,7 +364,7 @@ Gendalf A. Gray
                 <span
                   className="movie-card__details-value"
                 >
-                  Magic tutorial
+                  Genre 1
                 </span>
               </p>
               <p
@@ -379,7 +378,7 @@ Gendalf A. Gray
                 <span
                   className="movie-card__details-value"
                 >
-                  2081
+                  2000
                 </span>
               </p>
             </div>

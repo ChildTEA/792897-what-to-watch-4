@@ -260,14 +260,17 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Title 1"
+            <video
+              autoPlay={false}
               height="175"
-              src="img/awesome-preview.jpg"
+              loop={true}
+              muted={true}
+              poster="img/awesome-preview.jpg"
               width="280"
             />
           </div>
@@ -287,14 +290,17 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Title 2"
+            <video
+              autoPlay={false}
               height="175"
-              src="img/awesome-preview.jpg"
+              loop={true}
+              muted={true}
+              poster="img/awesome-preview.jpg"
               width="280"
             />
           </div>
@@ -314,14 +320,17 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Title 3"
+            <video
+              autoPlay={false}
               height="175"
-              src="img/awesome-preview.jpg"
+              loop={true}
+              muted={true}
+              poster="img/awesome-preview.jpg"
               width="280"
             />
           </div>
@@ -341,14 +350,17 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Title 4"
+            <video
+              autoPlay={false}
               height="175"
-              src="img/awesome-preview.jpg"
+              loop={true}
+              muted={true}
+              poster="img/awesome-preview.jpg"
               width="280"
             />
           </div>

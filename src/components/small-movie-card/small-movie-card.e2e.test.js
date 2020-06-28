@@ -14,9 +14,7 @@ const {id, title, preview, videoPreviewSrc} = shortMovieDescription;
 
 
 describe(`SmallMovieCard e2e`, () => {
-  it(`Should run mouseenter and mouseleave callbacks`, () => {
-    const onCardMouseEnter = jest.fn();
-
+  it(`Should change state on mouseEnter and mouseLeave`, () => {
     const wrapper = shallow(
         <SmallMovieCard
           id={id}
@@ -25,35 +23,14 @@ describe(`SmallMovieCard e2e`, () => {
           videoPreviewSrc={videoPreviewSrc}
           isPlaying={false}
           onCardTitleClick={() => {}}
-          onCardMouseEnter={onCardMouseEnter}
-          onCardMouseLeave={() => {}}
         />
     );
 
     wrapper.simulate(`mouseenter`);
-
-    expect(onCardMouseEnter).toHaveBeenCalledTimes(1);
-  });
-
-  it(`Should run mouseenter and mouseleave callbacks`, () => {
-    const onCardMouseLeave = jest.fn();
-
-    const wrapper = shallow(
-        <SmallMovieCard
-          id={id}
-          title={title}
-          preview={preview}
-          videoPreviewSrc={videoPreviewSrc}
-          isPlaying={false}
-          onCardTitleClick={() => {}}
-          onCardMouseEnter={() => {}}
-          onCardMouseLeave={onCardMouseLeave}
-        />
-    );
+    expect(wrapper.state(`isActive`)).toBe(true);
 
     wrapper.simulate(`mouseleave`);
-
-    expect(onCardMouseLeave).toHaveBeenCalledTimes(1);
+    expect(wrapper.state(`isActive`)).toBe(false);
   });
 
   it(`Should call onCardTitleClick one time`, () => {

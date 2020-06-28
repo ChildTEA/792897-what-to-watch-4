@@ -2,9 +2,25 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 
-class MovieCard extends PureComponent {
+
+class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isActive: false,
+    };
+
+    this._onCardMouseEnter = this._onCardMouseEnter.bind(this);
+    this._onCardMouseLeave = this._onCardMouseLeave.bind(this);
+  }
+
+  _onCardMouseEnter() {
+    this.setState({isActive: true});
+  }
+
+  _onCardMouseLeave() {
+    this.setState({isActive: false});
   }
 
   render() {
@@ -13,23 +29,18 @@ class MovieCard extends PureComponent {
       title,
       preview,
       videoPreviewSrc,
-      isPlaying,
       onCardTitleClick,
-      onCardMouseEnter,
-      onCardMouseLeave,
     } = this.props;
 
     return (
       <article
-        onMouseEnter={() => {
-          onCardMouseEnter(id);
-        }}
-        onMouseLeave={onCardMouseLeave}
+        onMouseEnter={this._onCardMouseEnter}
+        onMouseLeave={this._onCardMouseLeave}
         className="small-movie-card catalog__movies-card"
       >
         <div className="small-movie-card__image">
           <VideoPlayer
-            isPlaying={isPlaying}
+            isPlaying={this.state.isActive}
             preview={preview}
             videoPreviewSrc={videoPreviewSrc}
           />
@@ -50,16 +61,13 @@ class MovieCard extends PureComponent {
 }
 
 
-MovieCard.propTypes = {
+SmallMovieCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   preview: PropTypes.PropTypes.string.isRequired,
   videoPreviewSrc: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  onCardMouseEnter: PropTypes.func.isRequired,
-  onCardMouseLeave: PropTypes.func.isRequired,
 };
 
 
-export default MovieCard;
+export default SmallMovieCard;

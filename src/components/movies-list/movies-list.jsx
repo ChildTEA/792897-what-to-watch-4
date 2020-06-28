@@ -7,25 +7,6 @@ import {moviesType} from "../../types/types.js";
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeMovieID: null,
-    };
-
-    this.onCardMouseEnter = this.onCardMouseEnter.bind(this);
-    this.onCardMouseLeave = this.onCardMouseLeave.bind(this);
-  }
-
-  onCardMouseEnter(movieID) {
-    this.setState(() => ({
-      activeMovieID: movieID
-    }));
-  }
-
-  onCardMouseLeave() {
-    this.setState(() => ({
-      activeMovieID: null
-    }));
   }
 
   render() {
@@ -35,7 +16,6 @@ class MoviesList extends PureComponent {
       const title = movie.title;
       const preview = movie.preview;
       const videoPreviewSrc = movie.videoPreviewSrc;
-      const activeMovieID = this.state.activeMovieID;
 
       return (
         <SmallMovieCard
@@ -44,10 +24,7 @@ class MoviesList extends PureComponent {
           title={title}
           preview={preview}
           videoPreviewSrc={videoPreviewSrc}
-          isPlaying={activeMovieID === id}
           onCardTitleClick={onCardTitleClick}
-          onCardMouseEnter={this.onCardMouseEnter}
-          onCardMouseLeave={this.onCardMouseLeave}
         />
       );
     });

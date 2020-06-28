@@ -15,6 +15,7 @@ class VideoPlayer extends PureComponent {
     const {videoPreviewSrc: src} = this.props;
 
     video.src = src;
+    video.muted = true;
   }
 
   componentWillUnmount() {
@@ -49,7 +50,6 @@ class VideoPlayer extends PureComponent {
         height="175"
         autoPlay={false}
         loop={true}
-        muted={true}
         poster={`img/${this.props.preview}`}
       >
       </video>

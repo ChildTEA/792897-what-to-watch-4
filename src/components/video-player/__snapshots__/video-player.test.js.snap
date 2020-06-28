@@ -5,7 +5,6 @@ exports[`<VideoPlayer /> Should VideoPlayer render correctly 1`] = `
   autoPlay={false}
   height="175"
   loop={true}
-  muted={true}
   poster="img/awesome-preview.jpg"
   width="280"
 />

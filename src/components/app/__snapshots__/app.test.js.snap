@@ -269,7 +269,6 @@ Array [
               autoPlay={false}
               height="175"
               loop={true}
-              muted={true}
               poster="img/awesome-preview.jpg"
               width="280"
             />
@@ -299,7 +298,6 @@ Array [
               autoPlay={false}
               height="175"
               loop={true}
-              muted={true}
               poster="img/awesome-preview.jpg"
               width="280"
             />
@@ -329,7 +327,6 @@ Array [
               autoPlay={false}
               height="175"
               loop={true}
-              muted={true}
               poster="img/awesome-preview.jpg"
               width="280"
             />
@@ -359,7 +356,6 @@ Array [
               autoPlay={false}
               height="175"
               loop={true}
-              muted={true}
               poster="img/awesome-preview.jpg"
               width="280"
             />

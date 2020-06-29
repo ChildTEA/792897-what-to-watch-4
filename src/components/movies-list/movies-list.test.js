@@ -4,14 +4,21 @@ import MoviesList from "./movies-list.jsx";
 import {fullMoviesDescriptions} from "../../const/tests.js";
 
 
+const movies = fullMoviesDescriptions;
+
 describe(`<MoviesList />`, () => {
   it(`Should MoviesList render correctly`, () => {
     const tree = renderer
-      .create(
-          <MoviesList
-            movies={fullMoviesDescriptions}
-          />
-      )
+      .create((
+        <MoviesList
+          movies={movies}
+          onCardTitleClick={() => {}}
+        />
+      ), {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

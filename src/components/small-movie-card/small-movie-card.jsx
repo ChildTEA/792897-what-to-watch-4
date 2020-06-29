@@ -1,49 +1,73 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import VideoPlayer from "../video-player/video-player.jsx";
 
 
-const MovieCard = ({
-  id,
-  title,
-  preview,
-  onCardTitleClick,
-  onCardHover
-}) => {
-  return (
-    <article
-      onMouseEnter={onCardHover}
-      className="small-movie-card catalog__movies-card"
-    >
-      <div className="small-movie-card__image">
-        <img
-          src={`img/${preview}`}
-          alt={title}
-          width="280"
-          height="175"
-        />
-      </div>
-      <h3 className="small-movie-card__title">
-        <a
-          onClick={onCardTitleClick}
-          className="small-movie-card__link"
-          href="movie-page.html"
-          data-id={id}
-        >
-          {title}
-        </a>
-      </h3>
-    </article>
-  );
-};
+class SmallMovieCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isActive: false,
+    };
+
+    this._onCardMouseEnter = this._onCardMouseEnter.bind(this);
+    this._onCardMouseLeave = this._onCardMouseLeave.bind(this);
+  }
+
+  _onCardMouseEnter() {
+    this.setState({isActive: true});
+  }
+
+  _onCardMouseLeave() {
+    this.setState({isActive: false});
+  }
+
+  render() {
+    const {
+      id,
+      title,
+      preview,
+      videoPreviewSrc,
+      onCardTitleClick,
+    } = this.props;
+
+    return (
+      <article
+        onMouseEnter={this._onCardMouseEnter}
+        onMouseLeave={this._onCardMouseLeave}
+        className="small-movie-card catalog__movies-card"
+      >
+        <div className="small-movie-card__image">
+          <VideoPlayer
+            isPlaying={this.state.isActive}
+            preview={preview}
+            videoPreviewSrc={videoPreviewSrc}
+          />
+        </div>
+        <h3 className="small-movie-card__title">
+          <a
+            onClick={onCardTitleClick}
+            className="small-movie-card__link"
+            href="movie-page.html"
+            data-id={id}
+          >
+            {title}
+          </a>
+        </h3>
+      </article>
+    );
+  }
+}
 
 
-MovieCard.propTypes = {
+SmallMovieCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   preview: PropTypes.PropTypes.string.isRequired,
+  videoPreviewSrc: PropTypes.string.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
 };
 
 
-export default MovieCard;
+export default SmallMovieCard;

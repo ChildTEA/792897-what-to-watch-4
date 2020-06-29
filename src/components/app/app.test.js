@@ -13,11 +13,16 @@ const PROMO_FILM = {
 describe(`<App />`, () => {
   it(`Render App`, () => {
     const tree = renderer
-      .create(<App
-        promoFilmGenre={PROMO_FILM.genre}
-        promoFilmRelease={PROMO_FILM.release}
-        movies={fullMoviesDescriptions}
-      />)
+      .create((
+        <App
+          promoFilmGenre={PROMO_FILM.genre}
+          promoFilmRelease={PROMO_FILM.release}
+          movies={fullMoviesDescriptions}
+        />), {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

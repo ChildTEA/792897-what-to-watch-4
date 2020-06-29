@@ -1,27 +1,12 @@
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+import {moviesType} from "../../types/types.js";
 
 
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeMovieCard: null,
-    };
-
-    this.onCardHover = this.onCardHover.bind(this);
-  }
-
-  onCardHover(evt) {
-    const target = evt.target;
-
-    this.setState(() => {
-      return {
-        activeMovieCard: target,
-      };
-    });
   }
 
   render() {
@@ -30,6 +15,7 @@ class MoviesList extends PureComponent {
       const id = movie.id;
       const title = movie.title;
       const preview = movie.preview;
+      const videoPreviewSrc = movie.videoPreviewSrc;
 
       return (
         <SmallMovieCard
@@ -37,8 +23,8 @@ class MoviesList extends PureComponent {
           id={id}
           title={title}
           preview={preview}
+          videoPreviewSrc={videoPreviewSrc}
           onCardTitleClick={onCardTitleClick}
-          onCardHover={this.onCardHover}
         />
       );
     });
@@ -55,17 +41,7 @@ class MoviesList extends PureComponent {
 
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    runTime: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf[PropTypes.string.isRequired],
-    preview: PropTypes.string.isRequired,
-  })).isRequired,
+  movies: moviesType.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
 };
 

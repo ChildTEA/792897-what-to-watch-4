@@ -9,6 +9,7 @@ const movies = [
     release: `2010`,
     starring: [`Jim Carrey`, `Leonardo DiCaprio`, `Emma Stone`, `Emma Watson`, `David Duchovny`, `Gillian Anderson`, `Angelina Jolie`, `Brad Pitt`],
     preview: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0002`,
@@ -20,6 +21,7 @@ const movies = [
     release: `2002`,
     starring: [`Emma Stone`, `David Duchovny`, `Angelina Jolie`, `Brad Pitt`],
     preview: `bohemian-rhapsody.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0003`,
@@ -31,6 +33,7 @@ const movies = [
     release: `2011`,
     starring: [`Jim Carrey`, `Gillian Anderson`, `Brad Pitt`],
     preview: `macbeth.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0004`,
@@ -42,6 +45,7 @@ const movies = [
     release: `2007`,
     starring: [`Emma Watson`, `Angelina Jolie`, `Brad Pitt`],
     preview: `aviator.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0005`,
@@ -53,6 +57,7 @@ const movies = [
     release: `2012`,
     starring: [`Emma Stone`, `Gillian Anderson`, `Angelina Jolie`],
     preview: `we-need-to-talk-about-kevin.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0006`,
@@ -64,6 +69,7 @@ const movies = [
     release: `2080`,
     starring: [`Jim Carrey`, `Leonardo DiCaprio`, `Brad Pitt`],
     preview: `what-we-do-in-the-shadows.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0007`,
@@ -75,6 +81,7 @@ const movies = [
     release: `2001`,
     starring: [`Jim Carrey`, `Gillian Anderson`, `Angelina Jolie`],
     preview: `revenant.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `0008`,
@@ -86,6 +93,7 @@ const movies = [
     release: `1981`,
     starring: [`Jim Carrey`, `Leonardo DiCaprio`],
     preview: `johnny-english.jpg`,
+    videoPreviewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
 ];
 

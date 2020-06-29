@@ -9,6 +9,7 @@ const fullMoviesDescriptions = [
     release: `2000`,
     starring: [`Awesome Actor`, `Awesome Actress`],
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0002`,
@@ -20,6 +21,7 @@ const fullMoviesDescriptions = [
     release: `2000`,
     starring: [`Awesome Actor`, `Awesome Actress`],
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0003`,
@@ -31,6 +33,7 @@ const fullMoviesDescriptions = [
     release: `2000`,
     starring: [`Awesome Actor`, `Awesome Actress`],
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0004`,
@@ -42,6 +45,7 @@ const fullMoviesDescriptions = [
     release: `2000`,
     starring: [`Awesome Actor`, `Awesome Actress`],
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
 ];
 
@@ -50,21 +54,25 @@ const shortMoviesDescriptions = [
     id: `0001`,
     title: `Title 1`,
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0002`,
     title: `Title 2`,
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0003`,
     title: `Title 3`,
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     id: `0004`,
     title: `Title 4`,
     preview: `awesome-preview.jpg`,
+    videoPreviewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
 ];
 

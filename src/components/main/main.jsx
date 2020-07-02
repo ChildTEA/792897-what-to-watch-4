@@ -2,7 +2,7 @@ import GanresList from "../genres-list/genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import React from "react";
-import {getFilterTypes} from "../../const/const.js";
+import {FilterTypes} from "../../const/const.js";
 import {moviesType} from "../../types/types.js";
 
 
@@ -11,7 +11,7 @@ const Main = ({
   promoMovie,
   onCardTitleClick
 }) => {
-  const filterTypes = getFilterTypes();
+  const filterTypes = FilterTypes;
   const promoMovieGenre = promoMovie.genre;
   const promoMovieRelease = promoMovie.release;
 

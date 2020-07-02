@@ -1,3 +1,5 @@
+import {getUniqueObjectValues} from "../utils/utils.js";
+
 const FilterType = {
   ALL: `All genres`,
   COMEDY: `Comedies`,
@@ -11,11 +13,7 @@ const FilterType = {
   THRILLER: `Thrillers`,
 };
 
-const getFilterTypes = () => {
-  const types = Object.values(FilterType);
-  const uniqueValues = types.filter((qurrent, index, values) => values.indexOf(qurrent) === index);
+const FilterTypes = getUniqueObjectValues(FilterType);
 
-  return uniqueValues;
-};
 
-export {FilterType, getFilterTypes};
+export {FilterType, FilterTypes};

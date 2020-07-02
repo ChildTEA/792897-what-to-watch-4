@@ -6,7 +6,7 @@ import {getMoviesByFilterType} from "./utils/filter.js";
 
 const initialState = {
   allMovies: movies,
-  currentFilterType: FilterType.ALL,
+  activeFilterType: FilterType.ALL,
   promoMovie,
   moviesToShow: getMoviesByFilterType(movies, FilterType.ALL),
 };
@@ -31,12 +31,12 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_FILTER_TYPE:
-      if (state.currentFilterType !== action.payload) {
-        return extend(state.currentFilterType, action.payload);
+      if (state.activeFilterType !== action.payload) {
+        return extend(state, {activeFilterType: action.payload});
       }
       break;
     case ActionType.GET_MOVIES_BY_GENRE:
-      const filteredMovies = getMoviesByFilterType(state.allMovies, state.currentFilterType);
+      const filteredMovies = getMoviesByFilterType(state.allMovies, state.activeFilterType);
 
       return extend(state, {moviesToShow: filteredMovies});
 

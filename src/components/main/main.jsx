@@ -2,17 +2,18 @@ import GanresList from "../genres-list/genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import React from "react";
-import {FilterType, getFilterTypes} from "../../const/const.js";
+import {getFilterTypes} from "../../const/const.js";
 import {moviesType} from "../../types/types.js";
 
 
 const Main = ({
   movies,
-  promoFilmGenre,
-  promoFilmRelease,
+  promoMovie,
   onCardTitleClick
 }) => {
   const filterTypes = getFilterTypes();
+  const promoMovieGenre = promoMovie.genre;
+  const promoMovieRelease = promoMovie.release;
 
   return (
     <React.Fragment>
@@ -48,8 +49,8 @@ const Main = ({
             <div className="movie-card__desc">
               <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoFilmGenre}</span>
-                <span className="movie-card__year">{promoFilmRelease}</span>
+                <span className="movie-card__genre">{promoMovieGenre}</span>
+                <span className="movie-card__year">{promoMovieRelease}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -77,7 +78,6 @@ const Main = ({
 
           <GanresList
             filterTypes={filterTypes}
-            activeFilter={FilterType.ALL}
           />
 
           <MoviesList
@@ -111,8 +111,10 @@ const Main = ({
 
 Main.propTypes = {
   movies: moviesType.isRequired,
-  promoFilmGenre: PropTypes.string.isRequired,
-  promoFilmRelease: PropTypes.number.isRequired,
+  promoMovie: PropTypes.shape({
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+  }),
   onCardTitleClick: PropTypes.func.isRequired,
 };
 

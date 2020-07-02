@@ -1,4 +1,4 @@
-import FilterType from "../const/const.js";
+import {FilterType} from "../const/const.js";
 
 
 const getComedyMovies = (moviesToFilter) => {

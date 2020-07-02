@@ -11,5 +11,11 @@ const FilterType = {
   THRILLER: `Thrillers`,
 };
 
+const getFilterTypes = () => {
+  const types = Object.values(FilterType);
+  const uniqueValues = types.filter((qurrent, index, values) => values.indexOf(qurrent) === index);
 
-export {FilterType};
+  return uniqueValues;
+};
+
+export {FilterType, getFilterTypes};

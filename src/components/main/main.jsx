@@ -1,6 +1,8 @@
+import GanresList from "../genres-list/genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import React from "react";
+import {FilterType, getFilterTypes} from "../../const/const.js";
 import {moviesType} from "../../types/types.js";
 
 
@@ -10,6 +12,8 @@ const Main = ({
   promoFilmRelease,
   onCardTitleClick
 }) => {
+  const filterTypes = getFilterTypes();
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -71,38 +75,10 @@ const Main = ({
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <GanresList
+            filterTypes={filterTypes}
+            activeFilter={FilterType.ALL}
+          />
 
           <MoviesList
             movies={movies}
@@ -132,11 +108,13 @@ const Main = ({
   );
 };
 
+
 Main.propTypes = {
   movies: moviesType.isRequired,
   promoFilmGenre: PropTypes.string.isRequired,
   promoFilmRelease: PropTypes.number.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
 };
+
 
 export default Main;

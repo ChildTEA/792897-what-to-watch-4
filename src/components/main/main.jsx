@@ -1,15 +1,20 @@
+import GanresList from "../genres-list/genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import React from "react";
+import {FilterTypes} from "../../const/const.js";
 import {moviesType} from "../../types/types.js";
 
 
 const Main = ({
   movies,
-  promoFilmGenre,
-  promoFilmRelease,
+  promoMovie,
   onCardTitleClick
 }) => {
+  const filterTypes = FilterTypes;
+  const promoMovieGenre = promoMovie.genre;
+  const promoMovieRelease = promoMovie.release;
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -44,8 +49,8 @@ const Main = ({
             <div className="movie-card__desc">
               <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoFilmGenre}</span>
-                <span className="movie-card__year">{promoFilmRelease}</span>
+                <span className="movie-card__genre">{promoMovieGenre}</span>
+                <span className="movie-card__year">{promoMovieRelease}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -71,38 +76,9 @@ const Main = ({
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <GanresList
+            filterTypes={filterTypes}
+          />
 
           <MoviesList
             movies={movies}
@@ -132,11 +108,15 @@ const Main = ({
   );
 };
 
+
 Main.propTypes = {
   movies: moviesType.isRequired,
-  promoFilmGenre: PropTypes.string.isRequired,
-  promoFilmRelease: PropTypes.number.isRequired,
+  promoMovie: PropTypes.shape({
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+  }),
   onCardTitleClick: PropTypes.func.isRequired,
 };
+
 
 export default Main;

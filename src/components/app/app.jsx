@@ -2,6 +2,7 @@ import Main from "../main/main.jsx";
 import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {moviesType} from "../../types/types.js";
 
@@ -28,15 +29,14 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {movies, promoFilmGenre, promoFilmRelease} = this.props;
+    const {movies, promoMovie} = this.props;
 
 
     if (this.state.showingPage === `index`) {
       return (
         <Main
           movies={movies}
-          promoFilmGenre={promoFilmGenre}
-          promoFilmRelease={promoFilmRelease}
+          promoMovie={promoMovie}
           onCardTitleClick={this._onCardTitleClick}
         />
       );
@@ -84,8 +84,19 @@ class App extends PureComponent {
 
 App.propTypes = {
   movies: moviesType.isRequired,
-  promoFilmGenre: PropTypes.string.isRequired,
-  promoFilmRelease: PropTypes.number.isRequired,
+  promoMovie: PropTypes.shape({
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+  }),
 };
 
-export default App;
+
+const mapStateToProps = (state) => ({
+  movies: state.moviesToShow,
+  promoMovie: state.promoMovie,
+  currentFilterType: state.currentFilterType,
+});
+
+
+export {App};
+export default connect(mapStateToProps, null)(App);

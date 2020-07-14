@@ -3,20 +3,10 @@
 exports[`<SmallMovieCard /> Should SmallMovieCard render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
     className="small-movie-card__image"
-  >
-    <video
-      autoPlay={false}
-      height="175"
-      loop={true}
-      poster="img/awesome-preview.jpg"
-      width="280"
-    />
-  </div>
+  />
   <h3
     className="small-movie-card__title"
   >

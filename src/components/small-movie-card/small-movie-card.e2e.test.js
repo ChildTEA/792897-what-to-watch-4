@@ -1,6 +1,6 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import Enzyme, {shallow} from "enzyme";
+import React from "react";
 import SmallMovieCard from "./small-movie-card.jsx";
 import {shortMovieDescription} from "../../const/tests.js";
 
@@ -14,7 +14,11 @@ const {id, title, preview, videoPreviewSrc} = shortMovieDescription;
 
 
 describe(`SmallMovieCard e2e`, () => {
-  it(`Should change state on mouseEnter and mouseLeave`, () => {
+  it(`Should call mouseEnter and mouseLeave callbacks one time`, () => {
+    const onMouseEnter = jest.fn();
+    const onMouseLeave = jest.fn();
+
+
     const wrapper = shallow(
         <SmallMovieCard
           id={id}
@@ -22,16 +26,25 @@ describe(`SmallMovieCard e2e`, () => {
           preview={preview}
           videoPreviewSrc={videoPreviewSrc}
           isPlaying={false}
+          onActivation={onMouseEnter}
           onCardTitleClick={() => {}}
-        />
+          onDeactivation={onMouseLeave}
+        >
+          <video />
+        </SmallMovieCard>
     );
 
     wrapper.simulate(`mouseenter`);
-    expect(wrapper.state(`isActive`)).toBe(true);
+
+    expect(onMouseEnter).toHaveBeenCalledTimes(1);
+    expect(onMouseLeave).toHaveBeenCalledTimes(0);
 
     wrapper.simulate(`mouseleave`);
-    expect(wrapper.state(`isActive`)).toBe(false);
+
+    expect(onMouseEnter).toHaveBeenCalledTimes(1);
+    expect(onMouseLeave).toHaveBeenCalledTimes(1);
   });
+
 
   it(`Should call onCardTitleClick one time`, () => {
     const onCardTitleClick = jest.fn();
@@ -43,10 +56,12 @@ describe(`SmallMovieCard e2e`, () => {
           preview={preview}
           videoPreviewSrc={videoPreviewSrc}
           isPlaying={false}
+          onActivation={() => {}}
           onCardTitleClick={onCardTitleClick}
-          onCardMouseEnter={() => {}}
-          onCardMouseLeave={() => {}}
-        />
+          onDeactivation={() => {}}
+        >
+          <video />
+        </SmallMovieCard>
     );
 
     const movieCardTitle = wrapper.find(`.small-movie-card__link`);

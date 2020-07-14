@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<withVideo /> Should withVideo render correctly 1`] = `
+<div>
+  <video />
+</div>
+`;

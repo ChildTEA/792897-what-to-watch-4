@@ -2,6 +2,11 @@ import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {moviesType} from "../../types/types.js";
+import withVideo from "../../hocs/with-video/with-video.js";
+import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
+
+
+const SmallMovieCardWrapped = withActivePlayer(withVideo(SmallMovieCard));
 
 
 class MoviesList extends PureComponent {
@@ -10,7 +15,10 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {movies, onCardTitleClick} = this.props;
+    const {
+      movies,
+      onCardTitleClick,
+    } = this.props;
     const smallMovieCards = movies.map((movie) => {
       const id = movie.id;
       const title = movie.title;
@@ -18,7 +26,7 @@ class MoviesList extends PureComponent {
       const videoPreviewSrc = movie.videoPreviewSrc;
 
       return (
-        <SmallMovieCard
+        <SmallMovieCardWrapped
           key={title}
           id={id}
           title={title}

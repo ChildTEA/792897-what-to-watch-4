@@ -2,7 +2,7 @@ import Adapter from "enzyme-adapter-react-16";
 import Enzyme, {shallow} from "enzyme";
 import React from "react";
 import SmallMovieCard from "./small-movie-card.jsx";
-import {shortMovieDescription} from "../../const/tests.js";
+import {fullMovieDescription} from "../../const/tests.js";
 
 
 Enzyme.configure({
@@ -10,7 +10,7 @@ Enzyme.configure({
 });
 
 
-const {id, title, preview, videoPreviewSrc} = shortMovieDescription;
+const {id, name} = fullMovieDescription;
 
 
 describe(`SmallMovieCard e2e`, () => {
@@ -22,12 +22,9 @@ describe(`SmallMovieCard e2e`, () => {
     const wrapper = shallow(
         <SmallMovieCard
           id={id}
-          title={title}
-          preview={preview}
-          videoPreviewSrc={videoPreviewSrc}
-          isPlaying={false}
+          name={name}
           onActivation={onMouseEnter}
-          onCardTitleClick={() => {}}
+          onCardClick={() => {}}
           onDeactivation={onMouseLeave}
         >
           <video />
@@ -46,18 +43,15 @@ describe(`SmallMovieCard e2e`, () => {
   });
 
 
-  it(`Should call onCardTitleClick one time`, () => {
-    const onCardTitleClick = jest.fn();
+  it(`Should call onCardClick one time`, () => {
+    const onCardClick = jest.fn();
 
     const wrapper = shallow(
         <SmallMovieCard
           id={id}
-          title={title}
-          preview={preview}
-          videoPreviewSrc={videoPreviewSrc}
-          isPlaying={false}
+          name={name}
           onActivation={() => {}}
-          onCardTitleClick={onCardTitleClick}
+          onCardClick={onCardClick}
           onDeactivation={() => {}}
         >
           <video />
@@ -67,7 +61,10 @@ describe(`SmallMovieCard e2e`, () => {
     const movieCardTitle = wrapper.find(`.small-movie-card__link`);
 
     movieCardTitle.simulate(`click`);
+    expect(onCardClick).toHaveBeenCalledTimes(1);
 
-    expect(onCardTitleClick).toHaveBeenCalledTimes(1);
+    const movieCardImage = wrapper.find(`.small-movie-card__image`);
+    movieCardImage.simulate(`click`);
+    expect(onCardClick).toHaveBeenCalledTimes(2);
   });
 });

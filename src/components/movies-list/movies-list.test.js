@@ -12,7 +12,7 @@ describe(`<MoviesList />`, () => {
       .create((
         <MoviesList
           movies={movies}
-          onCardTitleClick={() => {}}
+          onCardClick={() => {}}
         />
       ), {
         createNodeMock: () => {

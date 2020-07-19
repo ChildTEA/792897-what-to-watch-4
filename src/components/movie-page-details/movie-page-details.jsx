@@ -2,19 +2,30 @@ import React from "react";
 import {movieType} from "../../types/types.js";
 
 
-const MoviePageDetails = ({
-  movie
-}) => {
+const formatTime = (timeInMinutes) => {
+  const hours = Math.floor(timeInMinutes / 60);
+  const minutes = timeInMinutes % 60;
+
+  const resultHours = hours > 0 ? `${hours}h ` : ``;
+  const resultMinutes = minutes > 0 ? `${minutes}m` : ``;
+
+  return resultHours + resultMinutes;
+};
+
+
+const MoviePageDetails = ({movie}) => {
   const {
     id,
-    title,
+    name,
     director,
     genre,
-    poster,
+    posterImage,
     runTime,
-    release,
+    realised,
     starring,
   } = movie;
+
+  const formatedRunTime = formatTime(runTime);
 
 
   return (
@@ -73,10 +84,10 @@ const MoviePageDetails = ({
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{release}</span>
+                <span className="movie-card__year">{realised}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -101,7 +112,7 @@ const MoviePageDetails = ({
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={`img/${poster}`} width="218" height="327" />
+              <img src={posterImage} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -136,7 +147,7 @@ const MoviePageDetails = ({
                 <div className="movie-card__text-col">
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Run Time</strong>
-                    <span className="movie-card__details-value">{runTime}</span>
+                    <span className="movie-card__details-value">{formatedRunTime}</span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Genre</strong>
@@ -144,7 +155,7 @@ const MoviePageDetails = ({
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Released</strong>
-                    <span className="movie-card__details-value">{release}</span>
+                    <span className="movie-card__details-value">{realised}</span>
                   </p>
                 </div>
               </div>

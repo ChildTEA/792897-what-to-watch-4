@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MoviePageDetails from "./movie-page-details.jsx";
-import {fullMoviesDescription} from "../../const/tests.js";
+import {fullMovieDescription} from "../../const/tests.js";
 
 
-const movie = fullMoviesDescription;
+const movie = fullMovieDescription;
 
 
 describe(`<MoviePageDetails />`, () => {

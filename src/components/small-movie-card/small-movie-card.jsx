@@ -7,10 +7,10 @@ class SmallMovieCard extends PureComponent {
     const {
       id,
       children,
-      title,
+      name,
       onActivation,
       onDeactivation,
-      onCardTitleClick,
+      onCardClick,
     } = this.props;
 
 
@@ -20,17 +20,21 @@ class SmallMovieCard extends PureComponent {
         onMouseLeave={onDeactivation}
         className="small-movie-card catalog__movies-card"
       >
-        <div className="small-movie-card__image">
+        <div
+          onClick={onCardClick}
+          className="small-movie-card__image"
+          data-id={id}
+        >
           {children}
         </div>
         <h3 className="small-movie-card__title">
           <a
-            onClick={onCardTitleClick}
+            onClick={onCardClick}
             className="small-movie-card__link"
             href="movie-page.html"
             data-id={id}
           >
-            {title}
+            {name}
           </a>
         </h3>
       </article>
@@ -40,16 +44,14 @@ class SmallMovieCard extends PureComponent {
 
 
 SmallMovieCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  title: PropTypes.string.isRequired,
-  preview: PropTypes.PropTypes.string.isRequired,
-  videoPreviewSrc: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   onActivation: PropTypes.func.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   onDeactivation: PropTypes.func.isRequired,
 };
 

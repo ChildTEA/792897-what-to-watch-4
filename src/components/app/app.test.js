@@ -1,16 +1,17 @@
 import configureStore from "redux-mock-store";
 import React from "react";
 import renderer from "react-test-renderer";
-import {App} from "./app.jsx";
-import {fullMoviesDescriptions} from "../../const/tests.js";
-import {FilterType} from "../../const/const.js";
+
 import {Provider} from "react-redux";
 
+import NameSpace from "../../reducer/name-space.js";
 
-const PROMO_MOVIE = {
-  genre: `Drama`,
-  release: 2010,
-};
+import {App} from "./app.jsx";
+import {fullMovieDescription, fullMoviesDescriptions} from "../../const/tests.js";
+import {FilterType} from "../../const/const.js";
+
+
+const PROMO_MOVIE = fullMovieDescription;
 
 
 const mockStore = configureStore([]);
@@ -19,15 +20,19 @@ const mockStore = configureStore([]);
 describe(`<App />`, () => {
   it(`Render App`, () => {
     const store = mockStore({
-      activeFilterType: FilterType.ALL,
+      [NameSpace.DATA]: {
+        activeFilterType: FilterType.ALL,
+      },
     });
 
     const tree = renderer
       .create((
         <Provider store={store}>
           <App
+            currentPage={``}
             promoMovie={PROMO_MOVIE}
-            movies={fullMoviesDescriptions}
+            moviesToShow={fullMoviesDescriptions}
+            onCardClick={() => {}}
           />
         </Provider>), {
         createNodeMock: () => {

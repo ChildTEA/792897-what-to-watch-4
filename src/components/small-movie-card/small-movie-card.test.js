@@ -1,12 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import SmallMovieCard from "./small-movie-card.jsx";
-import {shortMovieDescription} from "../../const/tests.js";
+import {fullMovieDescription} from "../../const/tests.js";
 
 
-const {id, title, preview, videoPreviewSrc} = shortMovieDescription;
-const isPlaying = false;
-
+const {id, name} = fullMovieDescription;
+const children = <video className="children-component" />;
 
 describe(`<SmallMovieCard />`, () => {
   it(`Should SmallMovieCard render correctly`, () => {
@@ -14,14 +13,13 @@ describe(`<SmallMovieCard />`, () => {
       .create((
         <SmallMovieCard
           id={id}
-          title={title}
-          preview={preview}
-          isPlaying={isPlaying}
-          videoPreviewSrc={videoPreviewSrc}
-          onCardTitleClick={() => {}}
-          onCardMouseEnter={() => {}}
-          onCardMouseLeave={() => {}}
-        />), {
+          name={name}
+          onActivation={() => {}}
+          onDeactivation={() => {}}
+          onCardClick={() => {}}
+        >
+          {children}
+        </SmallMovieCard>), {
         createNodeMock: () => {
           return {};
         }

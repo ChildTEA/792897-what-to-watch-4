@@ -1,49 +1,43 @@
-import Main from "../main/main.jsx";
-import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+
 import {connect} from "react-redux";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {moviesType} from "../../types/types.js";
+
+import Main from "../main/main.jsx";
+import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
+
+import {movieType, moviesType} from "../../types/types.js";
+import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
+import {getCurrentPage} from "../../reducer/navigation/selectors.js";
+import {ActionCreator as navigationActionCreator} from "../../reducer/navigation/navigation.js";
 
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showingPage: `index`,
-    };
-
-    this._onCardTitleClick = this._onCardTitleClick.bind(this);
-  }
-
-  _onCardTitleClick(evt) {
-    evt.preventDefault();
-
-    const id = evt.target.dataset.id;
-
-    this.setState({
-      showingPage: id,
-    });
-  }
-
   _renderApp() {
-    const {movies, promoMovie} = this.props;
+    const {
+      currentPage,
+      promoMovie,
+      moviesToShow: movies,
+      onCardClick,
+    } = this.props;
 
-
-    if (this.state.showingPage === `index`) {
+    if (currentPage === `index`) {
       return (
         <Main
           movies={movies}
           promoMovie={promoMovie}
-          onCardTitleClick={this._onCardTitleClick}
+          onCardClick={onCardClick}
         />
       );
     }
 
-    if (this.state.showingPage !== `index`) {
-      const movieIndex = movies.findIndex((item) => item.id === this.state.showingPage);
+    if (currentPage !== `index`) {
+      const movieIndex = movies.findIndex((movie) => {
+        const movieID = movie.id.toString();
+
+        return movieID === currentPage;
+      });
 
       if (movieIndex < 0) {
         return null;
@@ -62,7 +56,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movies} = this.props;
+    const {moviesToShow: movies} = this.props;
 
     return (
       <BrowserRouter>
@@ -83,20 +77,29 @@ class App extends PureComponent {
 
 
 App.propTypes = {
-  movies: moviesType.isRequired,
-  promoMovie: PropTypes.shape({
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-  }),
+  moviesToShow: moviesType.isRequired,
+  promoMovie: movieType.isRequired,
+  currentPage: PropTypes.string.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = (state) => ({
-  movies: state.moviesToShow,
-  promoMovie: state.promoMovie,
-  currentFilterType: state.currentFilterType,
+  moviesToShow: getMoviesToShow(state),
+  promoMovie: getPromoMovie(state),
+  currentPage: getCurrentPage(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCardClick(evt) {
+    evt.preventDefault();
+
+    const id = evt.target.dataset.id;
+
+    dispatch(navigationActionCreator.setCurrentPage(id));
+  }
 });
 
 
 export {App};
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

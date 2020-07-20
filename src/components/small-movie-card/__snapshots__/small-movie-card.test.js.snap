@@ -3,20 +3,28 @@
 exports[`<SmallMovieCard /> Should SmallMovieCard render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="small-movie-card__image"
-  />
+    data-id={1}
+    onClick={[Function]}
+  >
+    <video
+      className="children-component"
+    />
+  </div>
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
-      data-id="0001"
+      data-id={1}
       href="movie-page.html"
       onClick={[Function]}
     >
-      Title 1
+      Movie title 1
     </a>
   </h3>
 </article>

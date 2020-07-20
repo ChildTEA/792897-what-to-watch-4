@@ -15,7 +15,7 @@ const withVideo = (Component) => {
       const video = this._videoRef.current;
       const {
         videoPreviewSrc: src,
-        preview
+        previewImage
       } = this.props;
 
       video.src = src;
@@ -24,7 +24,7 @@ const withVideo = (Component) => {
       video.height = `175`;
       video.autoPlay = false;
       video.loop = true;
-      video.poster = `img/${preview}`;
+      video.poster = `${previewImage}`;
     }
 
     componentWillUnmount() {
@@ -67,7 +67,7 @@ const withVideo = (Component) => {
 
   WithVideo.propTypes = {
     isActive: PropTypes.bool.isRequired,
-    preview: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
     videoPreviewSrc: PropTypes.string.isRequired,
   };
 

@@ -30,7 +30,7 @@ describe(`<withVideo />`, () => {
     const tree = renderer.create((
       <MockComponentWrapped
         isActive={false}
-        preview={``}
+        previewImage={``}
         videoPreviewSrc={``}
       />
     ), {createNodeMock() {

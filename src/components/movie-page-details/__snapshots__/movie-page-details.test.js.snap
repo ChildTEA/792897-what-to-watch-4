@@ -112,7 +112,7 @@ Array [
   </div>,
   <section
     className="movie-card movie-card--full"
-    data-id="0001"
+    data-id={1}
   >
     <div
       className="movie-card__hero"
@@ -181,7 +181,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Title 1
+            Movie title 1
           </h2>
           <p
             className="movie-card__meta"
@@ -189,13 +189,11 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Genre 1
+              Comedy
             </span>
             <span
               className="movie-card__year"
-            >
-              2000
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
@@ -255,7 +253,7 @@ Array [
         >
           <img
             height="327"
-            src="img/awesome-poster.jpg"
+            src="poster_image1"
             width="218"
           />
         </div>
@@ -350,7 +348,7 @@ Awesome Actress
                 <span
                   className="movie-card__details-value"
                 >
-                  1h 0m
+                  2h 2m
                 </span>
               </p>
               <p
@@ -364,7 +362,7 @@ Awesome Actress
                 <span
                   className="movie-card__details-value"
                 >
-                  Genre 1
+                  Comedy
                 </span>
               </p>
               <p
@@ -377,9 +375,7 @@ Awesome Actress
                 </strong>
                 <span
                   className="movie-card__details-value"
-                >
-                  2000
-                </span>
+                />
               </p>
             </div>
           </div>

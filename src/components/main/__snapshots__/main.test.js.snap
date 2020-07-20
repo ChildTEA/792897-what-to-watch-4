@@ -89,13 +89,11 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Comedy
             </span>
             <span
               className="movie-card__year"
-            >
-              2010
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
@@ -274,6 +272,8 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            data-id={1}
+            onClick={[Function]}
           >
             <video />
           </div>
@@ -282,11 +282,11 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              data-id="0001"
+              data-id={1}
               href="movie-page.html"
               onClick={[Function]}
             >
-              Title 1
+              Movie title 1
             </a>
           </h3>
         </article>
@@ -297,6 +297,8 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            data-id={2}
+            onClick={[Function]}
           >
             <video />
           </div>
@@ -305,11 +307,11 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              data-id="0002"
+              data-id={2}
               href="movie-page.html"
               onClick={[Function]}
             >
-              Title 2
+              Movie title 2
             </a>
           </h3>
         </article>
@@ -320,6 +322,8 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            data-id={3}
+            onClick={[Function]}
           >
             <video />
           </div>
@@ -328,11 +332,11 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              data-id="0003"
+              data-id={3}
               href="movie-page.html"
               onClick={[Function]}
             >
-              Title 3
+              Movie title 3
             </a>
           </h3>
         </article>
@@ -343,6 +347,8 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            data-id={4}
+            onClick={[Function]}
           >
             <video />
           </div>
@@ -351,11 +357,11 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              data-id="0004"
+              data-id={4}
               href="movie-page.html"
               onClick={[Function]}
             >
-              Title 4
+              Movie title 4
             </a>
           </h3>
         </article>

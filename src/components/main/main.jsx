@@ -3,13 +3,13 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import React from "react";
 import {FilterTypes} from "../../const/const.js";
-import {moviesType} from "../../types/types.js";
+import {movieType, moviesType} from "../../types/types.js";
 
 
 const Main = ({
   movies,
   promoMovie,
-  onCardTitleClick
+  onCardClick
 }) => {
   const filterTypes = FilterTypes;
   const promoMovieGenre = promoMovie.genre;
@@ -82,7 +82,7 @@ const Main = ({
 
           <MoviesList
             movies={movies}
-            onCardTitleClick={onCardTitleClick}
+            onCardClick={onCardClick}
           />
 
           <div className="catalog__more">
@@ -111,11 +111,8 @@ const Main = ({
 
 Main.propTypes = {
   movies: moviesType.isRequired,
-  promoMovie: PropTypes.shape({
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-  }),
-  onCardTitleClick: PropTypes.func.isRequired,
+  promoMovie: movieType.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 

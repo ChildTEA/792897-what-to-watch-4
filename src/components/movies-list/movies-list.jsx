@@ -17,22 +17,22 @@ class MoviesList extends PureComponent {
   render() {
     const {
       movies,
-      onCardTitleClick,
+      onCardClick,
     } = this.props;
     const smallMovieCards = movies.map((movie) => {
       const id = movie.id;
-      const title = movie.title;
-      const preview = movie.preview;
+      const name = movie.name;
+      const previewImage = movie.previewImage;
       const videoPreviewSrc = movie.videoPreviewSrc;
 
       return (
         <SmallMovieCardWrapped
-          key={title}
+          key={name}
           id={id}
-          title={title}
-          preview={preview}
+          name={name}
+          previewImage={previewImage}
           videoPreviewSrc={videoPreviewSrc}
-          onCardTitleClick={onCardTitleClick}
+          onCardClick={onCardClick}
         />
       );
     });
@@ -50,7 +50,7 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: moviesType.isRequired,
-  onCardTitleClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 

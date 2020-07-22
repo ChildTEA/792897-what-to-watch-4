@@ -6,6 +6,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from "../main/main.jsx";
 import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
+import SignIn from "../sign-in/sign-in.jsx";
 
 import {movieType, moviesType} from "../../types/types.js";
 import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
@@ -67,6 +68,11 @@ class App extends PureComponent {
           <Route exact path="/movie-details">
             <MoviePageDetails
               movie={movies[0]}
+            />
+          </Route>
+          <Route exact path="/sing-in">
+            <SignIn
+              movie={() => {}}
             />
           </Route>
         </Switch>

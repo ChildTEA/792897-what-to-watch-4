@@ -1,5 +1,7 @@
 import React from "react";
 import {movieType} from "../../types/types.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import PropTypes from "prop-types";
 
 
 const formatTime = (timeInMinutes) => {
@@ -13,7 +15,12 @@ const formatTime = (timeInMinutes) => {
 };
 
 
-const MoviePageDetails = ({movie}) => {
+const MoviePageDetails = ({
+  authorizationStatus,
+  movie,
+  onLogoClick,
+  onSignInClick,
+}) => {
   const {
     id,
     name,
@@ -68,7 +75,11 @@ const MoviePageDetails = ({movie}) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <a
+                onClick={onLogoClick}
+                href="main.html"
+                className="logo__link"
+              >
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
@@ -76,9 +87,17 @@ const MoviePageDetails = ({movie}) => {
             </div>
 
             <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
+              {authorizationStatus === AuthorizationStatus.AUTH ?
+                <div className="user-block__avatar">
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </div> :
+                <a
+                  onClick={onSignInClick}
+                  href="sign-in.html"
+                  className="user-block__link">
+                    Sign in
+                </a>
+              }
             </div>
           </header>
 
@@ -227,7 +246,10 @@ const MoviePageDetails = ({movie}) => {
 
 
 MoviePageDetails.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   movie: movieType.isRequired,
+  onLogoClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 

@@ -4,12 +4,15 @@ import PropTypes from "prop-types";
 import React from "react";
 import {FilterTypes} from "../../const/const.js";
 import {movieType, moviesType} from "../../types/types.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 
 const Main = ({
+  authorizationStatus,
   movies,
   promoMovie,
-  onCardClick
+  onCardClick,
+  onSignInClick,
 }) => {
   const filterTypes = FilterTypes;
   const promoMovieGenre = promoMovie.genre;
@@ -34,9 +37,17 @@ const Main = ({
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
+            {authorizationStatus === AuthorizationStatus.AUTH ?
+              <div className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div> :
+              <a
+                onClick={onSignInClick}
+                href="sign-in.html"
+                className="user-block__link">
+                  Sign in
+              </a>
+            }
           </div>
         </header>
 
@@ -110,9 +121,11 @@ const Main = ({
 
 
 Main.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   movies: moviesType.isRequired,
   promoMovie: movieType.isRequired,
   onCardClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 

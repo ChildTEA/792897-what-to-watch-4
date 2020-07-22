@@ -9,6 +9,7 @@ import Main from "./main.jsx";
 import {FilterType} from "../../const/const.js";
 import {fullMovieDescription, fullMoviesDescriptions} from "../../const/tests.js";
 import NameSpace from "../../reducer/name-space.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 
 Enzyme.configure({
@@ -27,14 +28,17 @@ describe(`Main e2e`, () => {
       activeFilterType: FilterType.ALL,
     },
   });
+
   it(`Should call onCardClick one time`, () => {
     const onCardClick = jest.fn();
 
     const wrapper = mount(
         <Provider store={store}>
           <Main
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
             movies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
+            onSignInClick={() => {}}
             onCardClick={onCardClick}
           />
         </Provider>
@@ -49,5 +53,26 @@ describe(`Main e2e`, () => {
 
     image.simulate(`click`, {preventDefault() {}});
     expect(onCardClick).toHaveBeenCalledTimes(2);
+  });
+
+  it(`Should call onCardClick one time`, () => {
+    const onSignInClick = jest.fn();
+
+    const wrapper = mount(
+        <Provider store={store}>
+          <Main
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+            movies={fullMoviesDescriptions}
+            promoMovie={PROMO_MOVIE}
+            onSignInClick={onSignInClick}
+            onCardClick={() => {}}
+          />
+        </Provider>
+    );
+
+    const title = wrapper.find(`.user-block__link`).first();
+
+    title.simulate(`click`, {preventDefault() {}});
+    expect(onSignInClick).toHaveBeenCalledTimes(1);
   });
 });

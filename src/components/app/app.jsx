@@ -25,6 +25,7 @@ class App extends PureComponent {
       promoMovie,
       moviesToShow: movies,
       onCardClick,
+      onLogoClick,
       onSignInClick,
     } = this.props;
 
@@ -41,6 +42,7 @@ class App extends PureComponent {
     } else if (currentPage === `sign-in`) {
       return (
         <SignIn
+          onLogoClick={onLogoClick}
           onSubmit={login}
         />
       );
@@ -61,6 +63,7 @@ class App extends PureComponent {
         <MoviePageDetails
           authorizationStatus={authorizationStatus}
           movie={movie}
+          onLogoClick={onLogoClick}
           onSignInClick={onSignInClick}
         />
       );
@@ -85,6 +88,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/sing-in">
             <SignIn
+              onLogoClick={() => {}}
               onSubmit={() => {}}
             />
           </Route>
@@ -102,6 +106,7 @@ App.propTypes = {
   promoMovie: movieType.isRequired,
   currentPage: PropTypes.string.isRequired,
   onCardClick: PropTypes.func.isRequired,
+  onLogoClick: PropTypes.func.isRequired,
   onSignInClick: PropTypes.func.isRequired,
 };
 
@@ -130,7 +135,13 @@ const mapDispatchToProps = (dispatch) => ({
     evt.preventDefault();
 
     dispatch(navigationActionCreator.setCurrentPage(`sign-in`));
-  }
+  },
+
+  onLogoClick(evt) {
+    evt.preventDefault();
+
+    dispatch(navigationActionCreator.setCurrentPage(`index`));
+  },
 });
 
 

@@ -9,6 +9,7 @@ import NameSpace from "../../reducer/name-space.js";
 import {App} from "./app.jsx";
 import {fullMovieDescription, fullMoviesDescriptions} from "../../const/tests.js";
 import {FilterType} from "../../const/const.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 
 const PROMO_MOVIE = fullMovieDescription;
@@ -23,16 +24,25 @@ describe(`<App />`, () => {
       [NameSpace.DATA]: {
         activeFilterType: FilterType.ALL,
       },
+      // [NameSpace.NAVIGATION]: {
+      //   currentPage: `index`,
+      // },
+      // [NameSpace.USER]: {
+      //   authorizationStatus: AuthorizationStatus.NO_AUTH,
+      // },
     });
-
     const tree = renderer
       .create((
         <Provider store={store}>
           <App
-            currentPage={``}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
             promoMovie={PROMO_MOVIE}
+            login={() => {}}
+            currentPage={`index`}
             moviesToShow={fullMoviesDescriptions}
             onCardClick={() => {}}
+            onLogoClick={() => {}}
+            onSignInClick={() => {}}
           />
         </Provider>), {
         createNodeMock: () => {

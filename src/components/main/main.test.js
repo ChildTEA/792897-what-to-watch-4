@@ -32,6 +32,7 @@ describe(`<Main />`, () => {
             movies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
             onCardClick={() => {}}
+            onSignInClick={() => {}}
           />
         </Provider>
       ), {
@@ -59,6 +60,7 @@ describe(`<Main />`, () => {
             movies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
             onCardClick={() => {}}
+            onSignInClick={() => {}}
           />
         </Provider>
       ), {

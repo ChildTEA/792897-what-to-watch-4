@@ -16,6 +16,8 @@ describe(`<MoviePageDetails />`, () => {
       .create(<MoviePageDetails
         authorizationStatus={authorized}
         movie={movie}
+        onLogoClick={() => {}}
+        onSignInClick={() => {}}
       />)
       .toJSON();
 
@@ -27,6 +29,8 @@ describe(`<MoviePageDetails />`, () => {
       .create(<MoviePageDetails
         authorizationStatus={unauthorized}
         movie={movie}
+        onLogoClick={() => {}}
+        onSignInClick={() => {}}
       />)
       .toJSON();
 

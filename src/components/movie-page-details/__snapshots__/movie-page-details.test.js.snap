@@ -139,6 +139,7 @@ Array [
           <a
             className="logo__link"
             href="main.html"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -673,6 +674,7 @@ Array [
           <a
             className="logo__link"
             href="main.html"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -697,6 +699,7 @@ Array [
           <a
             className="user-block__link"
             href="sign-in.html"
+            onClick={[Function]}
           >
             Sign in
           </a>

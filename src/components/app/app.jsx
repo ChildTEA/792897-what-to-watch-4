@@ -9,6 +9,7 @@ import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
 import {movieType, moviesType} from "../../types/types.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
 import {getCurrentPage} from "../../reducer/navigation/selectors.js";
@@ -83,7 +84,10 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/movie-details">
             <MoviePageDetails
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
               movie={movies[0]}
+              onLogoClick={() => {}}
+              onSignInClick={() => {}}
             />
           </Route>
           <Route exact path="/sing-in">

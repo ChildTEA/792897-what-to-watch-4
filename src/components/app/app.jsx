@@ -9,6 +9,7 @@ import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
 import {movieType, moviesType} from "../../types/types.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
 import {getCurrentPage} from "../../reducer/navigation/selectors.js";
 import {ActionCreator as navigationActionCreator} from "../../reducer/navigation/navigation.js";
@@ -17,6 +18,7 @@ import {ActionCreator as navigationActionCreator} from "../../reducer/navigation
 class App extends PureComponent {
   _renderApp() {
     const {
+      authorizationStatus,
       currentPage,
       promoMovie,
       moviesToShow: movies,
@@ -26,6 +28,7 @@ class App extends PureComponent {
     if (currentPage === `index`) {
       return (
         <Main
+          authorizationStatus={authorizationStatus}
           movies={movies}
           promoMovie={promoMovie}
           onCardClick={onCardClick}
@@ -48,6 +51,7 @@ class App extends PureComponent {
 
       return (
         <MoviePageDetails
+          authorizationStatus={authorizationStatus}
           movie={movie}
         />
       );
@@ -83,6 +87,7 @@ class App extends PureComponent {
 
 
 App.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   moviesToShow: moviesType.isRequired,
   promoMovie: movieType.isRequired,
   currentPage: PropTypes.string.isRequired,
@@ -91,6 +96,7 @@ App.propTypes = {
 
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
   moviesToShow: getMoviesToShow(state),
   promoMovie: getPromoMovie(state),
   currentPage: getCurrentPage(state),

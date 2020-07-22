@@ -1,5 +1,7 @@
 import React from "react";
 import {movieType} from "../../types/types.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import PropTypes from "prop-types";
 
 
 const formatTime = (timeInMinutes) => {
@@ -13,7 +15,10 @@ const formatTime = (timeInMinutes) => {
 };
 
 
-const MoviePageDetails = ({movie}) => {
+const MoviePageDetails = ({
+  authorizationStatus,
+  movie
+}) => {
   const {
     id,
     name,
@@ -76,9 +81,12 @@ const MoviePageDetails = ({movie}) => {
             </div>
 
             <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
+              {authorizationStatus === AuthorizationStatus.AUTH ?
+                <div className="user-block__avatar">
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </div> :
+                <a href="sign-in.html" className="user-block__link">Sign in</a>
+              }
             </div>
           </header>
 
@@ -227,6 +235,7 @@ const MoviePageDetails = ({movie}) => {
 
 
 MoviePageDetails.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   movie: movieType.isRequired,
 };
 

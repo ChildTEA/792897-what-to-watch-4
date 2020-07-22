@@ -2,6 +2,7 @@ import configureStore from "redux-mock-store";
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {fullMovieDescription, fullMoviesDescriptions} from "../../const/tests.js";
 import {FilterType} from "../../const/const.js";
 import {Provider} from "react-redux";
@@ -11,6 +12,8 @@ import NameSpace from "../../reducer/name-space.js";
 const mockStore = configureStore([]);
 
 const PROMO_MOVIE = fullMovieDescription;
+const authorized = AuthorizationStatus.AUTH;
+const unauthorized = AuthorizationStatus.NO_AUTH;
 
 
 describe(`<Main />`, () => {
@@ -25,6 +28,34 @@ describe(`<Main />`, () => {
       .create((
         <Provider store={store}>
           <Main
+            authorizationStatus={authorized}
+            movies={fullMoviesDescriptions}
+            promoMovie={PROMO_MOVIE}
+            onCardClick={() => {}}
+          />
+        </Provider>
+      ), {
+        createNodeMock: () => {
+          return {};
+        }
+      })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Should Main render correctly`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {
+        activeFilterType: FilterType.ALL,
+      },
+    });
+
+    const tree = renderer
+      .create((
+        <Provider store={store}>
+          <Main
+            authorizationStatus={unauthorized}
             movies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
             onCardClick={() => {}}

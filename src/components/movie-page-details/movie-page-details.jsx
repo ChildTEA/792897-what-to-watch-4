@@ -17,7 +17,8 @@ const formatTime = (timeInMinutes) => {
 
 const MoviePageDetails = ({
   authorizationStatus,
-  movie
+  movie,
+  onSignInClick,
 }) => {
   const {
     id,
@@ -85,7 +86,12 @@ const MoviePageDetails = ({
                 <div className="user-block__avatar">
                   <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
                 </div> :
-                <a href="sign-in.html" className="user-block__link">Sign in</a>
+                <a
+                  onClick={onSignInClick}
+                  href="sign-in.html"
+                  className="user-block__link">
+                    Sign in
+                </a>
               }
             </div>
           </header>
@@ -237,6 +243,7 @@ const MoviePageDetails = ({
 MoviePageDetails.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   movie: movieType.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 

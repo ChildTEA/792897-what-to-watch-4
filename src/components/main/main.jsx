@@ -11,7 +11,8 @@ const Main = ({
   authorizationStatus,
   movies,
   promoMovie,
-  onCardClick
+  onCardClick,
+  onSignInClick,
 }) => {
   const filterTypes = FilterTypes;
   const promoMovieGenre = promoMovie.genre;
@@ -40,7 +41,12 @@ const Main = ({
               <div className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
               </div> :
-              <a href="sign-in.html" className="user-block__link">Sign in</a>
+              <a
+                onClick={onSignInClick}
+                href="sign-in.html"
+                className="user-block__link">
+                  Sign in
+              </a>
             }
           </div>
         </header>
@@ -119,6 +125,7 @@ Main.propTypes = {
   movies: moviesType.isRequired,
   promoMovie: movieType.isRequired,
   onCardClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 

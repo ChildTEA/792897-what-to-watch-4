@@ -13,6 +13,7 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
 import {getCurrentPage} from "../../reducer/navigation/selectors.js";
 import {ActionCreator as navigationActionCreator} from "../../reducer/navigation/navigation.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 
 class App extends PureComponent {
@@ -20,9 +21,11 @@ class App extends PureComponent {
     const {
       authorizationStatus,
       currentPage,
+      login,
       promoMovie,
       moviesToShow: movies,
       onCardClick,
+      onSignInClick,
     } = this.props;
 
     if (currentPage === `index`) {
@@ -32,11 +35,16 @@ class App extends PureComponent {
           movies={movies}
           promoMovie={promoMovie}
           onCardClick={onCardClick}
+          onSignInClick={onSignInClick}
         />
       );
-    }
-
-    if (currentPage !== `index`) {
+    } else if (currentPage === `sign-in`) {
+      return (
+        <SignIn
+          onSubmit={login}
+        />
+      );
+    } else if (currentPage !== `index`) {
       const movieIndex = movies.findIndex((movie) => {
         const movieID = movie.id.toString();
 
@@ -53,6 +61,7 @@ class App extends PureComponent {
         <MoviePageDetails
           authorizationStatus={authorizationStatus}
           movie={movie}
+          onSignInClick={onSignInClick}
         />
       );
     }
@@ -76,7 +85,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/sing-in">
             <SignIn
-              movie={() => {}}
+              onSubmit={() => {}}
             />
           </Route>
         </Switch>
@@ -88,10 +97,12 @@ class App extends PureComponent {
 
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
   moviesToShow: moviesType.isRequired,
   promoMovie: movieType.isRequired,
   currentPage: PropTypes.string.isRequired,
   onCardClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 
@@ -103,12 +114,22 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
+
   onCardClick(evt) {
     evt.preventDefault();
 
     const id = evt.target.dataset.id;
 
     dispatch(navigationActionCreator.setCurrentPage(id));
+  },
+
+  onSignInClick(evt) {
+    evt.preventDefault();
+
+    dispatch(navigationActionCreator.setCurrentPage(`sign-in`));
   }
 });
 

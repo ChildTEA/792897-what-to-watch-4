@@ -41,30 +41,4 @@ describe(`SmallMovieCard e2e`, () => {
     expect(onMouseEnter).toHaveBeenCalledTimes(1);
     expect(onMouseLeave).toHaveBeenCalledTimes(1);
   });
-
-
-  it(`Should call onCardClick one time`, () => {
-    const onCardClick = jest.fn();
-
-    const wrapper = shallow(
-        <SmallMovieCard
-          id={id}
-          name={name}
-          onActivation={() => {}}
-          onCardClick={onCardClick}
-          onDeactivation={() => {}}
-        >
-          <video />
-        </SmallMovieCard>
-    );
-
-    const movieCardTitle = wrapper.find(`.small-movie-card__link`);
-
-    movieCardTitle.simulate(`click`);
-    expect(onCardClick).toHaveBeenCalledTimes(1);
-
-    const movieCardImage = wrapper.find(`.small-movie-card__image`);
-    movieCardImage.simulate(`click`);
-    expect(onCardClick).toHaveBeenCalledTimes(2);
-  });
 });

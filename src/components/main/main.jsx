@@ -17,6 +17,8 @@ const Main = ({
   const filterTypes = FilterTypes;
   const promoMovieGenre = promoMovie.genre;
   const promoMovieRelease = promoMovie.release;
+  const promoMoviePoster = promoMovie.backgroundImage;
+  const promoMovieName = promoMovie.name;
 
   return (
     <React.Fragment>
@@ -53,11 +55,11 @@ const Main = ({
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={promoMoviePoster} alt={`${promoMovieName} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{promoMovieName}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoMovieGenre}</span>
                 <span className="movie-card__year">{promoMovieRelease}</span>

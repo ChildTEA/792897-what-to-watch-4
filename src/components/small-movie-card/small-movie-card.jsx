@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const/const.js";
 
 
 class SmallMovieCard extends PureComponent {
@@ -10,7 +12,6 @@ class SmallMovieCard extends PureComponent {
       name,
       onActivation,
       onDeactivation,
-      onCardClick,
     } = this.props;
 
 
@@ -21,21 +22,20 @@ class SmallMovieCard extends PureComponent {
         className="small-movie-card catalog__movies-card"
       >
         <div
-          onClick={onCardClick}
           className="small-movie-card__image"
           data-id={id}
         >
           {children}
         </div>
         <h3 className="small-movie-card__title">
-          <a
-            onClick={onCardClick}
+          <Link
+            to={`${AppRoute.MOVIE_DETAILS}/${id}`}
             className="small-movie-card__link"
             href="movie-page.html"
             data-id={id}
           >
             {name}
-          </a>
+          </Link>
         </h3>
       </article>
     );
@@ -51,7 +51,6 @@ SmallMovieCard.propTypes = {
   ]).isRequired,
   name: PropTypes.string.isRequired,
   onActivation: PropTypes.func.isRequired,
-  onCardClick: PropTypes.func.isRequired,
   onDeactivation: PropTypes.func.isRequired,
 };
 

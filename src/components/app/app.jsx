@@ -1,103 +1,66 @@
+import history from "../../history.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 import {connect} from "react-redux";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 
 import Main from "../main/main.jsx";
 import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
 import {movieType, moviesType} from "../../types/types.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
 import {getCurrentPage} from "../../reducer/navigation/selectors.js";
 import {ActionCreator as navigationActionCreator} from "../../reducer/navigation/navigation.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {AppRoute} from "../../const/const.js";
 
 
 class App extends PureComponent {
-  _renderApp() {
+  render() {
     const {
       authorizationStatus,
-      currentPage,
       login,
       promoMovie,
       moviesToShow: movies,
-      onCardClick,
-      onLogoClick,
-      onSignInClick,
     } = this.props;
-
-    if (currentPage === `index`) {
-      return (
-        <Main
-          authorizationStatus={authorizationStatus}
-          movies={movies}
-          promoMovie={promoMovie}
-          onCardClick={onCardClick}
-          onSignInClick={onSignInClick}
-        />
-      );
-    } else if (currentPage === `sign-in`) {
-      return (
-        <SignIn
-          onLogoClick={onLogoClick}
-          onSubmit={login}
-        />
-      );
-    } else if (currentPage !== `index`) {
-      const movieIndex = movies.findIndex((movie) => {
-        const movieID = movie.id.toString();
-
-        return movieID === currentPage;
-      });
-
-      if (movieIndex < 0) {
-        return null;
-      }
-
-      const movie = movies[movieIndex];
-
-      return (
-        <MoviePageDetails
-          authorizationStatus={authorizationStatus}
-          movie={movie}
-          onLogoClick={onLogoClick}
-          onSignInClick={onSignInClick}
-        />
-      );
-    }
-
-    return null;
-  }
-
-  render() {
-    const {moviesToShow: movies} = this.props;
-
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
           <Route exact path="/">
-            {this._renderApp()}
-          </Route>
-          <Route exact path="/movie-details">
-            <MoviePageDetails
-              authorizationStatus={AuthorizationStatus.NO_AUTH}
-              movie={movies[0]}
-              onLogoClick={() => {}}
-              onSignInClick={() => {}}
+            <Main
+              authorizationStatus={authorizationStatus}
+              movies={movies}
+              promoMovie={promoMovie}
             />
           </Route>
-          <Route exact path="/sing-in">
+          <Route
+            exact
+            path={`${AppRoute.MOVIE_DETAILS}/:id`}
+            // path={`${AppRoute.MOVIE_DETAILS}`}
+            render={(historyProps) => {
+              return (
+                <MoviePageDetails
+                  historyProps={historyProps}
+                  authorizationStatus={authorizationStatus}
+                  movies={movies}
+                />
+              );
+            }}
+          >
+          </Route>
+          <Route exact path={AppRoute.LOGIN}>
             <SignIn
               onLogoClick={() => {}}
-              onSubmit={() => {}}
+              onSubmit={login}
             />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
@@ -109,9 +72,6 @@ App.propTypes = {
   moviesToShow: moviesType.isRequired,
   promoMovie: movieType.isRequired,
   currentPage: PropTypes.string.isRequired,
-  onCardClick: PropTypes.func.isRequired,
-  onLogoClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
 };
 
 
@@ -133,18 +93,6 @@ const mapDispatchToProps = (dispatch) => ({
     const id = evt.target.dataset.id;
 
     dispatch(navigationActionCreator.setCurrentPage(id));
-  },
-
-  onSignInClick(evt) {
-    evt.preventDefault();
-
-    dispatch(navigationActionCreator.setCurrentPage(`sign-in`));
-  },
-
-  onLogoClick(evt) {
-    evt.preventDefault();
-
-    dispatch(navigationActionCreator.setCurrentPage(`index`));
   },
 });
 

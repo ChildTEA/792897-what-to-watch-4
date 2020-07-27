@@ -1,5 +1,11 @@
 import {getUniqueObjectValues} from "../utils/utils.js";
 
+const AppRoute = {
+  LOGIN: `/sing-in`,
+  MOVIE_DETAILS: `/movie-details`,
+  ROOT: `/`,
+};
+
 const FilterType = {
   ALL: `All genres`,
   COMEDY: `Comedies`,
@@ -16,4 +22,4 @@ const FilterType = {
 const FilterTypes = getUniqueObjectValues(FilterType);
 
 
-export {FilterType, FilterTypes};
+export {AppRoute, FilterType, FilterTypes};

@@ -7,6 +7,8 @@ import {fullMovieDescription, fullMoviesDescriptions} from "../../const/tests.js
 import {FilterType} from "../../const/const.js";
 import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space.js";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 
 const mockStore = configureStore([]);
@@ -27,13 +29,15 @@ describe(`<Main />`, () => {
     const tree = renderer
       .create((
         <Provider store={store}>
-          <Main
-            authorizationStatus={authorized}
-            movies={fullMoviesDescriptions}
-            promoMovie={PROMO_MOVIE}
-            onCardClick={() => {}}
-            onSignInClick={() => {}}
-          />
+          <Router
+            history={history}
+          >
+            <Main
+              authorizationStatus={authorized}
+              movies={fullMoviesDescriptions}
+              promoMovie={PROMO_MOVIE}
+            />
+          </Router>
         </Provider>
       ), {
         createNodeMock: () => {
@@ -55,13 +59,15 @@ describe(`<Main />`, () => {
     const tree = renderer
       .create((
         <Provider store={store}>
-          <Main
-            authorizationStatus={unauthorized}
-            movies={fullMoviesDescriptions}
-            promoMovie={PROMO_MOVIE}
-            onCardClick={() => {}}
-            onSignInClick={() => {}}
-          />
+          <Router
+            history={history}
+          >
+            <Main
+              authorizationStatus={unauthorized}
+              movies={fullMoviesDescriptions}
+              promoMovie={PROMO_MOVIE}
+            />
+          </Router>
         </Provider>
       ), {
         createNodeMock: () => {

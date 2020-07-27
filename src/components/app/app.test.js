@@ -24,12 +24,6 @@ describe(`<App />`, () => {
       [NameSpace.DATA]: {
         activeFilterType: FilterType.ALL,
       },
-      // [NameSpace.NAVIGATION]: {
-      //   currentPage: `index`,
-      // },
-      // [NameSpace.USER]: {
-      //   authorizationStatus: AuthorizationStatus.NO_AUTH,
-      // },
     });
     const tree = renderer
       .create((
@@ -40,9 +34,6 @@ describe(`<App />`, () => {
             login={() => {}}
             currentPage={`index`}
             moviesToShow={fullMoviesDescriptions}
-            onCardClick={() => {}}
-            onLogoClick={() => {}}
-            onSignInClick={() => {}}
           />
         </Provider>), {
         createNodeMock: () => {

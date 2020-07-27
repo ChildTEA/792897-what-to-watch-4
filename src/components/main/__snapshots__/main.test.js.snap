@@ -53,7 +53,7 @@ Array [
           <img
             alt="User avatar"
             height="63"
-            src="img/avatar.jpg"
+            src="/img/avatar.jpg"
             width="63"
           />
         </div>
@@ -273,7 +273,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={1}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -283,7 +282,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={1}
-              href="movie-page.html"
+              href="/movie-details/1"
               onClick={[Function]}
             >
               Movie title 1
@@ -298,7 +297,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={2}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -308,7 +306,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={2}
-              href="movie-page.html"
+              href="/movie-details/2"
               onClick={[Function]}
             >
               Movie title 2
@@ -323,7 +321,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={3}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -333,7 +330,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={3}
-              href="movie-page.html"
+              href="/movie-details/3"
               onClick={[Function]}
             >
               Movie title 3
@@ -348,7 +345,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={4}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -358,7 +354,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={4}
-              href="movie-page.html"
+              href="/movie-details/4"
               onClick={[Function]}
             >
               Movie title 4
@@ -464,7 +460,7 @@ Array [
       >
         <a
           className="user-block__link"
-          href="sign-in.html"
+          href="/sing-in"
           onClick={[Function]}
         >
           Sign in
@@ -685,7 +681,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={1}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -695,7 +690,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={1}
-              href="movie-page.html"
+              href="/movie-details/1"
               onClick={[Function]}
             >
               Movie title 1
@@ -710,7 +705,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={2}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -720,7 +714,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={2}
-              href="movie-page.html"
+              href="/movie-details/2"
               onClick={[Function]}
             >
               Movie title 2
@@ -735,7 +729,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={3}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -745,7 +738,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={3}
-              href="movie-page.html"
+              href="/movie-details/3"
               onClick={[Function]}
             >
               Movie title 3
@@ -760,7 +753,6 @@ Array [
           <div
             className="small-movie-card__image"
             data-id={4}
-            onClick={[Function]}
           >
             <video />
           </div>
@@ -770,7 +762,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={4}
-              href="movie-page.html"
+              href="/movie-details/4"
               onClick={[Function]}
             >
               Movie title 4

@@ -1,5 +1,4 @@
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {moviesType} from "../../types/types.js";
 import withVideo from "../../hocs/with-video/with-video.js";
@@ -17,7 +16,6 @@ class MoviesList extends PureComponent {
   render() {
     const {
       movies,
-      onCardClick,
     } = this.props;
     const smallMovieCards = movies.map((movie) => {
       const id = movie.id;
@@ -32,7 +30,6 @@ class MoviesList extends PureComponent {
           name={name}
           previewImage={previewImage}
           videoPreviewSrc={videoPreviewSrc}
-          onCardClick={onCardClick}
         />
       );
     });
@@ -50,7 +47,6 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: moviesType.isRequired,
-  onCardClick: PropTypes.func.isRequired,
 };
 
 

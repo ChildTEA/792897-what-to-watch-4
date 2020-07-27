@@ -5,14 +5,14 @@ import React from "react";
 import {FilterTypes} from "../../const/const.js";
 import {movieType, moviesType} from "../../types/types.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const/const.js";
 
 
 const Main = ({
   authorizationStatus,
   movies,
   promoMovie,
-  onCardClick,
-  onSignInClick,
 }) => {
   const filterTypes = FilterTypes;
   const promoMovieGenre = promoMovie.genre;
@@ -39,14 +39,13 @@ const Main = ({
           <div className="user-block">
             {authorizationStatus === AuthorizationStatus.AUTH ?
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
               </div> :
-              <a
-                onClick={onSignInClick}
-                href="sign-in.html"
+              <Link
+                to={AppRoute.LOGIN}
                 className="user-block__link">
                   Sign in
-              </a>
+              </Link>
             }
           </div>
         </header>
@@ -93,7 +92,6 @@ const Main = ({
 
           <MoviesList
             movies={movies}
-            onCardClick={onCardClick}
           />
 
           <div className="catalog__more">
@@ -124,8 +122,6 @@ Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   movies: moviesType.isRequired,
   promoMovie: movieType.isRequired,
-  onCardClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
 };
 
 

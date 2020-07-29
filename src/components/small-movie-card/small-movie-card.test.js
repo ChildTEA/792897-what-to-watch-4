@@ -17,6 +17,7 @@ describe(`<SmallMovieCard />`, () => {
           history={history}
         >
           <SmallMovieCard
+            id={1}
             name={name}
             onActivation={() => {}}
             onDeactivation={() => {}}

@@ -33,6 +33,7 @@ describe(`<Main />`, () => {
             history={history}
           >
             <Main
+              addToFavorites={() => {}}
               authorizationStatus={authorized}
               movies={fullMoviesDescriptions}
               promoMovie={PROMO_MOVIE}
@@ -63,6 +64,7 @@ describe(`<Main />`, () => {
             history={history}
           >
             <Main
+              addToFavorites={() => {}}
               authorizationStatus={unauthorized}
               movies={fullMoviesDescriptions}
               promoMovie={PROMO_MOVIE}

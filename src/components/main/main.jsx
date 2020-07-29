@@ -10,15 +10,18 @@ import {AppRoute} from "../../const/const.js";
 
 
 const Main = ({
+  addToFavorites,
   authorizationStatus,
   movies,
   promoMovie,
 }) => {
   const filterTypes = FilterTypes;
+  const promoMovieId = promoMovie.id;
   const promoMovieGenre = promoMovie.genre;
   const promoMovieRelease = promoMovie.release;
   const promoMoviePoster = promoMovie.backgroundImage;
   const promoMovieName = promoMovie.name;
+  const isPromoFavorite = promoMovie.isFavorite;
 
   return (
     <React.Fragment>
@@ -72,10 +75,19 @@ const Main = ({
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button
+                  onClick={() => addToFavorites(promoMovieId, isPromoFavorite)}
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                >
+                  {isPromoFavorite ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
               </div>
@@ -121,6 +133,7 @@ const Main = ({
 
 
 Main.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   movies: moviesType.isRequired,
   promoMovie: movieType.isRequired,

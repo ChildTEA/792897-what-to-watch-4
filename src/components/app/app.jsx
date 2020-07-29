@@ -11,10 +11,10 @@ import SignIn from "../sign-in/sign-in.jsx";
 
 import {movieType, moviesType} from "../../types/types.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {getPromoMovie, getMoviesToShow} from "../../reducer/data/selectors.js";
+import {getPromoMovie, getMovies, getMoviesToShow} from "../../reducer/data/selectors.js";
 import {getCurrentPage} from "../../reducer/navigation/selectors.js";
-import {ActionCreator as navigationActionCreator} from "../../reducer/navigation/navigation.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {AppRoute} from "../../const/const.js";
 
 
@@ -22,10 +22,13 @@ class App extends PureComponent {
   render() {
     const {
       authorizationStatus,
+      addToFavorites,
       login,
       promoMovie,
-      moviesToShow: movies,
+      moviesToShow: moviesToShow,
+      allMovies: movies,
     } = this.props;
+
     return (
       <Router
         history={history}
@@ -33,21 +36,22 @@ class App extends PureComponent {
         <Switch>
           <Route exact path="/">
             <Main
+              addToFavorites={addToFavorites}
               authorizationStatus={authorizationStatus}
-              movies={movies}
+              movies={moviesToShow}
               promoMovie={promoMovie}
             />
           </Route>
           <Route
             exact
             path={`${AppRoute.MOVIE_DETAILS}/:id`}
-            // path={`${AppRoute.MOVIE_DETAILS}`}
             render={(historyProps) => {
               return (
                 <MoviePageDetails
                   historyProps={historyProps}
                   authorizationStatus={authorizationStatus}
                   movies={movies}
+                  addToFavorites={addToFavorites}
                 />
               );
             }}
@@ -67,9 +71,11 @@ class App extends PureComponent {
 
 
 App.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
   moviesToShow: moviesType.isRequired,
+  allMovies: moviesType.isRequired,
   promoMovie: movieType.isRequired,
   currentPage: PropTypes.string.isRequired,
 };
@@ -78,21 +84,18 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
   moviesToShow: getMoviesToShow(state),
+  allMovies: getMovies(state),
   promoMovie: getPromoMovie(state),
   currentPage: getCurrentPage(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(UserOperation.login(authData));
+  addToFavorites(movieId, isFavorite) {
+    dispatch(DataOperation.addToFavorites(movieId, isFavorite));
   },
 
-  onCardClick(evt) {
-    evt.preventDefault();
-
-    const id = evt.target.dataset.id;
-
-    dispatch(navigationActionCreator.setCurrentPage(id));
+  login(authData) {
+    dispatch(UserOperation.login(authData));
   },
 });
 

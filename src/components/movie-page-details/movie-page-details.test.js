@@ -25,6 +25,7 @@ describe(`<MoviePageDetails />`, () => {
             history={history}
           >
             <MoviePageDetails
+              addToFavorites={() => {}}
               authorizationStatus={authorized}
               movies={movies}
               historyProps={mockHistory}
@@ -43,6 +44,7 @@ describe(`<MoviePageDetails />`, () => {
             history={history}
           >
             <MoviePageDetails
+              addToFavorites={() => {}}
               authorizationStatus={unauthorized}
               movies={movies}
               historyProps={mockHistory}

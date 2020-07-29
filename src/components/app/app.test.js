@@ -29,7 +29,9 @@ describe(`<App />`, () => {
       .create((
         <Provider store={store}>
           <App
+            addToFavorites={() => {}}
             authorizationStatus={AuthorizationStatus.NO_AUTH}
+            allMovies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
             login={() => {}}
             currentPage={`index`}

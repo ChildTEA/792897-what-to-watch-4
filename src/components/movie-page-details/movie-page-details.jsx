@@ -32,6 +32,7 @@ const findMovieById = (movies, id) => {
 
 
 const MoviePageDetails = ({
+  addToFavorites,
   authorizationStatus,
   historyProps,
   movies,
@@ -47,6 +48,7 @@ const MoviePageDetails = ({
     runTime,
     realised,
     starring,
+    isFavorite,
   } = movie;
 
   const formatedRunTime = formatTime(runTime);
@@ -92,9 +94,7 @@ const MoviePageDetails = ({
           <header className="page-header movie-card__head">
             <div className="logo">
               <Link
-                // onClick={onLogoClick}
                 to={AppRoute.ROOT}
-                // href="main.html"
                 className="logo__link"
               >
                 <span className="logo__letter logo__letter--1">W</span>
@@ -132,10 +132,19 @@ const MoviePageDetails = ({
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button
+                  onClick={() => addToFavorites(id, isFavorite)}
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                >
+                  {isFavorite ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
                 <a href="add-review.html" className="btn movie-card__button">Add review</a>
@@ -262,6 +271,7 @@ const MoviePageDetails = ({
 
 
 MoviePageDetails.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   historyProps: PropTypes.object.isRequired,
   movies: moviesType.isRequired,

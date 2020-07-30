@@ -14,7 +14,6 @@ class SmallMovieCard extends PureComponent {
       onDeactivation,
     } = this.props;
 
-
     return (
       <article
         onMouseEnter={onActivation}

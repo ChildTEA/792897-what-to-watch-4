@@ -16,12 +16,6 @@ const Main = ({
   promoMovie,
 }) => {
   const filterTypes = FilterTypes;
-  const promoMovieId = promoMovie.id;
-  const promoMovieGenre = promoMovie.genre;
-  const promoMovieRelease = promoMovie.release;
-  const promoMoviePoster = promoMovie.backgroundImage;
-  const promoMovieName = promoMovie.name;
-  const isPromoFavorite = promoMovie.isFavorite;
 
   return (
     <React.Fragment>
@@ -58,14 +52,14 @@ const Main = ({
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={promoMoviePoster} alt={`${promoMovieName} poster`} width="218" height="327" />
+              <img src={promoMovie.backgroundImage} alt={`${promoMovie.name} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoMovieName}</h2>
+              <h2 className="movie-card__title">{promoMovie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoMovieGenre}</span>
-                <span className="movie-card__year">{promoMovieRelease}</span>
+                <span className="movie-card__genre">{promoMovie.genre}</span>
+                <span className="movie-card__year">{promoMovie.release}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -76,11 +70,11 @@ const Main = ({
                   <span>Play</span>
                 </button>
                 <button
-                  onClick={() => addToFavorites(promoMovieId, isPromoFavorite)}
+                  onClick={() => addToFavorites(promoMovie.id, promoMovie.isFavorite)}
                   className="btn btn--list movie-card__button"
                   type="button"
                 >
-                  {isPromoFavorite ?
+                  {promoMovie.isFavorite ?
                     <svg viewBox="0 0 18 14" width="18" height="14">
                       <use xlinkHref="#in-list"></use>
                     </svg> :

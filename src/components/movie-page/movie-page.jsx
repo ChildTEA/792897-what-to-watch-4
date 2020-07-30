@@ -32,25 +32,11 @@ const MoviePage = ({
   historyProps,
   movies,
 }) => {
-  const id = historyProps.match.params.id;
-  const movie = findMovieById(movies, id);
-  const {
-    name,
-    backgroundImage,
-    description,
-    rating,
-    scoresCount,
-    director,
-    starring,
-    genre,
-    posterImage,
-    realised,
-    isFavorite,
-  } = movie;
-
   const SIMILAR_MOVIES_COUNT = 4;
-  const textRating = getRatingTextRepresentation(rating);
-  const similarMovies = getSameGenreMovies(movies, genre, SIMILAR_MOVIES_COUNT);
+  const MOVIE_ID = historyProps.match.params.id;
+  const movie = findMovieById(movies, MOVIE_ID);
+  const textRating = getRatingTextRepresentation(movie.rating);
+  const similarMovies = getSameGenreMovies(movies, movie.genre, SIMILAR_MOVIES_COUNT);
   let similarMovieCards = null;
 
   if (similarMovies) {
@@ -99,7 +85,7 @@ const MoviePage = ({
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={backgroundImage} alt={name} />
+            <img src={movie.backgroundImage} alt={movie.name} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header movie-card__head">
@@ -129,10 +115,10 @@ const MoviePage = ({
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 className="movie-card__title">{movie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{realised}</span>
+                <span className="movie-card__genre">{movie.genre}</span>
+                <span className="movie-card__year">{movie.realised}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -143,11 +129,11 @@ const MoviePage = ({
                   <span>Play</span>
                 </button>
                 <button
-                  onClick={() => addToFavorites(id, isFavorite)}
+                  onClick={() => addToFavorites(MOVIE_ID, movie.isFavorite)}
                   className="btn btn--list movie-card__button"
                   type="button"
                 >
-                  {isFavorite ?
+                  {movie.isFavorite ?
                     <svg viewBox="0 0 18 14" width="18" height="14">
                       <use xlinkHref="#in-list"></use>
                     </svg> :
@@ -166,14 +152,14 @@ const MoviePage = ({
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={posterImage} alt={`${name} poster`} width={218} height={327} />
+              <img src={movie.posterImage} alt={`${movie.name} poster`} width={218} height={327} />
             </div>
             <div className="movie-card__desc">
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item movie-nav__item--active">
                     <Link
-                      to={`${AppRoute.MOVIE_PAGE}/${id}`}
+                      to={`${AppRoute.MOVIE_PAGE}/${MOVIE_ID}`}
                       className="movie-nav__link"
                     >
                       Overview
@@ -181,7 +167,7 @@ const MoviePage = ({
                   </li>
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_DETAILS}/${id}`}
+                      to={`${AppRoute.MOVIE_DETAILS}/${MOVIE_ID}`}
                       className="movie-nav__link"
                     >
                       Details
@@ -189,7 +175,7 @@ const MoviePage = ({
                   </li>
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_REVIEWS}/${id}`}
+                      to={`${AppRoute.MOVIE_REVIEWS}/${MOVIE_ID}`}
                       className="movie-nav__link"
                     >
                       Reviews
@@ -198,16 +184,16 @@ const MoviePage = ({
                 </ul>
               </nav>
               <div className="movie-rating">
-                <div className="movie-rating__score">{rating}</div>
+                <div className="movie-rating__score">{movie.rating}</div>
                 <p className="movie-rating__meta">
                   <span className="movie-rating__level">{textRating}</span>
-                  <span className="movie-rating__count">{scoresCount} ratings</span>
+                  <span className="movie-rating__count">{movie.scoresCount} ratings</span>
                 </p>
               </div>
               <div className="movie-card__text">
-                {description}
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-                <p className="movie-card__starring"><strong>Starring: {starring.join(`, `)}</strong></p>
+                {movie.description}
+                <p className="movie-card__director"><strong>Director: {movie.director}</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {movie.starring.join(`, `)}</strong></p>
               </div>
             </div>
           </div>

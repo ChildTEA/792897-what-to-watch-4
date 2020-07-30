@@ -18,18 +18,13 @@ class MoviesList extends PureComponent {
       movies,
     } = this.props;
     const smallMovieCards = movies.map((movie) => {
-      const id = movie.id;
-      const name = movie.name;
-      const previewImage = movie.previewImage;
-      const videoPreviewSrc = movie.videoPreviewSrc;
-
       return (
         <SmallMovieCardWrapped
-          key={name}
-          id={id}
-          name={name}
-          previewImage={previewImage}
-          videoPreviewSrc={videoPreviewSrc}
+          key={movie.name}
+          id={movie.id}
+          name={movie.name}
+          previewImage={movie.previewImage}
+          videoPreviewSrc={movie.videoPreviewSrc}
         />
       );
     });

@@ -17,19 +17,11 @@ const MoviePageReviews = ({
   historyProps,
   movies,
 }) => {
-  const id = historyProps.match.params.id;
-  const movie = findMovieById(movies, id);
-  const {
-    name,
-    backgroundImage,
-    genre,
-    posterImage,
-    realised,
-    isFavorite,
-  } = movie;
+  const MOVIE_ID = historyProps.match.params.id;
+  const movie = findMovieById(movies, MOVIE_ID);
 
   const SIMILAR_MOVIES_COUNT = 4;
-  const similarMovies = getSameGenreMovies(movies, genre, SIMILAR_MOVIES_COUNT);
+  const similarMovies = getSameGenreMovies(movies, movie.genre, SIMILAR_MOVIES_COUNT);
   let similarMovieCards = null;
 
   if (similarMovies) {
@@ -78,10 +70,10 @@ const MoviePageReviews = ({
         </svg>
       </div>
 
-      <section className="movie-card movie-card--full" data-id={id}>
+      <section className="movie-card movie-card--full" data-id={MOVIE_ID}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={backgroundImage} alt={name} />
+            <img src={movie.backgroundImage} alt={movie.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -114,10 +106,10 @@ const MoviePageReviews = ({
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 className="movie-card__title">{movie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{realised}</span>
+                <span className="movie-card__genre">{movie.genre}</span>
+                <span className="movie-card__year">{movie.realised}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -128,11 +120,11 @@ const MoviePageReviews = ({
                   <span>Play</span>
                 </button>
                 <button
-                  onClick={() => addToFavorites(id, isFavorite)}
+                  onClick={() => addToFavorites(MOVIE_ID, movie.isFavorite)}
                   className="btn btn--list movie-card__button"
                   type="button"
                 >
-                  {isFavorite ?
+                  {movie.isFavorite ?
                     <svg viewBox="0 0 18 14" width="18" height="14">
                       <use xlinkHref="#in-list"></use>
                     </svg> :
@@ -151,7 +143,7 @@ const MoviePageReviews = ({
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={posterImage} width="218" height="327" />
+              <img src={movie.posterImage} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -159,7 +151,7 @@ const MoviePageReviews = ({
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_PAGE}/${id}`}
+                      to={`${AppRoute.MOVIE_PAGE}/${MOVIE_ID}`}
                       href="#" className="movie-nav__link"
                     >
                       Overview
@@ -167,7 +159,7 @@ const MoviePageReviews = ({
                   </li>
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_DETAILS}/${id}`}
+                      to={`${AppRoute.MOVIE_DETAILS}/${MOVIE_ID}`}
                       className="movie-nav__link"
                     >
                       Details
@@ -175,7 +167,7 @@ const MoviePageReviews = ({
                   </li>
                   <li className="movie-nav__item movie-nav__item--active">
                     <Link
-                      to={`${AppRoute.MOVIE_REVIEWS}/${id}`}
+                      to={`${AppRoute.MOVIE_REVIEWS}/${MOVIE_ID}`}
                       className="movie-nav__link"
                     >
                       Reviews

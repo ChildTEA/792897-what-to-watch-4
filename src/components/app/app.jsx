@@ -6,7 +6,9 @@ import {connect} from "react-redux";
 import {Switch, Route, Router} from "react-router-dom";
 
 import Main from "../main/main.jsx";
+import MoviePage from "../movie-page/movie-page.jsx";
 import MoviePageDetails from "../movie-page-details/movie-page-details.jsx";
+import MoviePageReviews from "../movie-page-reviews/movie-page-reviews.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 
 import {movieType, moviesType} from "../../types/types.js";
@@ -48,6 +50,36 @@ class App extends PureComponent {
             render={(historyProps) => {
               return (
                 <MoviePageDetails
+                  historyProps={historyProps}
+                  authorizationStatus={authorizationStatus}
+                  movies={movies}
+                  addToFavorites={addToFavorites}
+                />
+              );
+            }}
+          >
+          </Route>
+          <Route
+            exact
+            path={`${AppRoute.MOVIE_REVIEWS}/:id`}
+            render={(historyProps) => {
+              return (
+                <MoviePageReviews
+                  historyProps={historyProps}
+                  authorizationStatus={authorizationStatus}
+                  movies={movies}
+                  addToFavorites={addToFavorites}
+                />
+              );
+            }}
+          >
+          </Route>
+          <Route
+            exact
+            path={`${AppRoute.MOVIE_PAGE}/:id`}
+            render={(historyProps) => {
+              return (
+                <MoviePage
                   historyProps={historyProps}
                   authorizationStatus={authorizationStatus}
                   movies={movies}

@@ -2,7 +2,9 @@ import {getUniqueObjectValues} from "../utils/utils.js";
 
 const AppRoute = {
   LOGIN: `/sing-in`,
-  MOVIE_DETAILS: `/movie-details`,
+  MOVIE_DETAILS: `/movie-page-details`,
+  MOVIE_PAGE: `/movie-page`,
+  MOVIE_REVIEWS: `/movie-page-rewiews`,
   ROOT: `/`,
 };
 

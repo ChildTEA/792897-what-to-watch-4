@@ -29,7 +29,7 @@ class SmallMovieCard extends PureComponent {
         </div>
         <h3 className="small-movie-card__title">
           <Link
-            to={`${AppRoute.MOVIE_DETAILS}/${id}`}
+            to={`${AppRoute.MOVIE_PAGE}/${id}`}
             className="small-movie-card__link"
             href="movie-page.html"
             data-id={id}

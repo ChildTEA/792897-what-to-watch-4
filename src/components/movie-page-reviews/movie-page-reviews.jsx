@@ -93,7 +93,11 @@ const MoviePageReviews = ({
             <div className="user-block">
               {authorizationStatus === AuthorizationStatus.AUTH ?
                 <div className="user-block__avatar">
-                  <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  <Link
+                    to={AppRoute.MY_LIST}
+                  >
+                    <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  </Link>
                 </div> :
                 <Link
                   to={AppRoute.LOGIN}

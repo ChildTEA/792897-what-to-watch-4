@@ -95,6 +95,14 @@ class App extends PureComponent {
               onSubmit={login}
             />
           </Route>
+          <Route exact path={AppRoute.MY_LIST}>
+            <React.Fragment>
+              <h1>404</h1>
+              <p>
+                This page isn&#39;t ready yet. Go back!
+              </p>
+            </React.Fragment>
+          </Route>
         </Switch>
       </Router>
     );

@@ -5,6 +5,7 @@ const AppRoute = {
   MOVIE_DETAILS: `/movie-page-details`,
   MOVIE_PAGE: `/movie-page`,
   MOVIE_REVIEWS: `/movie-page-rewiews`,
+  MY_LIST: `/mylist`,
   ROOT: `/`,
 };
 

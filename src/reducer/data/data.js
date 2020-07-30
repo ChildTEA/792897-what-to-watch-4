@@ -1,7 +1,7 @@
 import {extend} from "../../utils/utils.js";
 import {FilterType} from "../../const/const.js";
 import {getMoviesByFilterType} from "../../utils/filter.js";
-import adaptPromoMovie from "../../adapter/promo-movie.js";
+import adaptMovie from "../../adapter/movie.js";
 import adaptMovies from "../../adapter/movies.js";
 
 
@@ -17,6 +17,7 @@ const ActionType = {
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
   SET_FILTER_TYPE: `SET_FILTER_TYPE`,
   GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`,
+  UPDATE_MOVIES: `UPDATE_MOVIES`,
 };
 
 const ActionCreator = {
@@ -30,7 +31,7 @@ const ActionCreator = {
   },
 
   loadPromoMovie: (movie) => {
-    const adaptedMovie = adaptPromoMovie(movie);
+    const adaptedMovie = adaptMovie(movie);
 
     return {
       type: ActionType.LOAD_PROMO_MOVIE,
@@ -46,9 +47,28 @@ const ActionCreator = {
   getMoviesByGenre: () => ({
     type: ActionType.GET_MOVIES_BY_GENRE,
   }),
+
+
+  updateMovies: (movie) => {
+    const adaptedMovie = adaptMovie(movie);
+
+    return {
+      type: ActionType.UPDATE_MOVIES,
+      payload: adaptedMovie,
+    };
+  },
 };
 
 const Operation = {
+  addToFavorites: (movieId, isFavorite) => (dispatch, getState, api) => {
+    const status = isFavorite ? `0` : `1`;
+
+    return api.post(`/favorite/${movieId}/${status}`, {})
+      .then((response) => {
+        dispatch(ActionCreator.updateMovies(response.data));
+      });
+  },
+
   loadMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
@@ -92,6 +112,26 @@ const reducer = (state = initialState, action) => {
 
       return extend(state, {
         moviesToShow: filteredMovies
+      });
+
+    case ActionType.UPDATE_MOVIES:
+      let movies = state.allMovies;
+      const promoMovie = state.promoMovie;
+      const movie = action.payload;
+
+      const movieIndex = movies.findIndex((item) => item.id === movie.id);
+
+      movies = [...movies.slice(0, movieIndex), movie, ...movies.slice(movieIndex + 1)];
+
+      if (promoMovie.id === movie.id) {
+        return extend(state, {
+          allMovies: movies,
+          promoMovie: movie,
+        });
+      }
+
+      return extend(state, {
+        allMovies: movies,
       });
 
     default:

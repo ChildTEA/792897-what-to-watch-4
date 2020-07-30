@@ -5,18 +5,23 @@ import React from "react";
 import {FilterTypes} from "../../const/const.js";
 import {movieType, moviesType} from "../../types/types.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const/const.js";
 
 
 const Main = ({
+  addToFavorites,
   authorizationStatus,
   movies,
   promoMovie,
-  onCardClick,
-  onSignInClick,
 }) => {
   const filterTypes = FilterTypes;
+  const promoMovieId = promoMovie.id;
   const promoMovieGenre = promoMovie.genre;
   const promoMovieRelease = promoMovie.release;
+  const promoMoviePoster = promoMovie.backgroundImage;
+  const promoMovieName = promoMovie.name;
+  const isPromoFavorite = promoMovie.isFavorite;
 
   return (
     <React.Fragment>
@@ -39,14 +44,13 @@ const Main = ({
           <div className="user-block">
             {authorizationStatus === AuthorizationStatus.AUTH ?
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
               </div> :
-              <a
-                onClick={onSignInClick}
-                href="sign-in.html"
+              <Link
+                to={AppRoute.LOGIN}
                 className="user-block__link">
                   Sign in
-              </a>
+              </Link>
             }
           </div>
         </header>
@@ -54,11 +58,11 @@ const Main = ({
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={promoMoviePoster} alt={`${promoMovieName} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{promoMovieName}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoMovieGenre}</span>
                 <span className="movie-card__year">{promoMovieRelease}</span>
@@ -71,10 +75,19 @@ const Main = ({
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button
+                  onClick={() => addToFavorites(promoMovieId, isPromoFavorite)}
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                >
+                  {isPromoFavorite ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
               </div>
@@ -93,7 +106,6 @@ const Main = ({
 
           <MoviesList
             movies={movies}
-            onCardClick={onCardClick}
           />
 
           <div className="catalog__more">
@@ -121,11 +133,10 @@ const Main = ({
 
 
 Main.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   movies: moviesType.isRequired,
   promoMovie: movieType.isRequired,
-  onCardClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
 };
 
 

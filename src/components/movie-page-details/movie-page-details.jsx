@@ -1,7 +1,9 @@
-import React from "react";
-import {movieType} from "../../types/types.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
 import PropTypes from "prop-types";
+import React from "react";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {moviesType} from "../../types/types.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const/const.js";
 
 
 const formatTime = (timeInMinutes) => {
@@ -14,26 +16,42 @@ const formatTime = (timeInMinutes) => {
   return resultHours + resultMinutes;
 };
 
+const findMovieById = (movies, id) => {
+  const movieIndex = movies.findIndex((movie) => {
+    const movieId = movie.id.toString();
+
+    return movieId === id;
+  });
+
+  if (movieIndex < 0) {
+    return null;
+  }
+
+  return movies[movieIndex];
+};
+
 
 const MoviePageDetails = ({
+  addToFavorites,
   authorizationStatus,
-  movie,
-  onLogoClick,
-  onSignInClick,
+  historyProps,
+  movies,
 }) => {
+  const id = historyProps.match.params.id;
+  const movie = findMovieById(movies, id);
   const {
-    id,
     name,
+    backgroundImage,
     director,
     genre,
     posterImage,
     runTime,
     realised,
     starring,
+    isFavorite,
   } = movie;
 
   const formatedRunTime = formatTime(runTime);
-
 
   return (
     <React.Fragment>
@@ -68,35 +86,33 @@ const MoviePageDetails = ({
       <section className="movie-card movie-card--full" data-id={id}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={backgroundImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a
-                onClick={onLogoClick}
-                href="main.html"
+              <Link
+                to={AppRoute.ROOT}
                 className="logo__link"
               >
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <div className="user-block">
               {authorizationStatus === AuthorizationStatus.AUTH ?
                 <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
                 </div> :
-                <a
-                  onClick={onSignInClick}
-                  href="sign-in.html"
+                <Link
+                  to={AppRoute.LOGIN}
                   className="user-block__link">
                     Sign in
-                </a>
+                </Link>
               }
             </div>
           </header>
@@ -116,10 +132,19 @@ const MoviePageDetails = ({
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button
+                  onClick={() => addToFavorites(id, isFavorite)}
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                >
+                  {isFavorite ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
                   <span>My list</span>
                 </button>
                 <a href="add-review.html" className="btn movie-card__button">Add review</a>
@@ -246,10 +271,10 @@ const MoviePageDetails = ({
 
 
 MoviePageDetails.propTypes = {
+  addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  movie: movieType.isRequired,
-  onLogoClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
+  historyProps: PropTypes.object.isRequired,
+  movies: moviesType.isRequired,
 };
 
 

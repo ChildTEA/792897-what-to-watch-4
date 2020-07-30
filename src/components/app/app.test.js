@@ -24,25 +24,18 @@ describe(`<App />`, () => {
       [NameSpace.DATA]: {
         activeFilterType: FilterType.ALL,
       },
-      // [NameSpace.NAVIGATION]: {
-      //   currentPage: `index`,
-      // },
-      // [NameSpace.USER]: {
-      //   authorizationStatus: AuthorizationStatus.NO_AUTH,
-      // },
     });
     const tree = renderer
       .create((
         <Provider store={store}>
           <App
+            addToFavorites={() => {}}
             authorizationStatus={AuthorizationStatus.NO_AUTH}
+            allMovies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
             login={() => {}}
             currentPage={`index`}
             moviesToShow={fullMoviesDescriptions}
-            onCardClick={() => {}}
-            onLogoClick={() => {}}
-            onSignInClick={() => {}}
           />
         </Provider>), {
         createNodeMock: () => {

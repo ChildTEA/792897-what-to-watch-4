@@ -9,7 +9,6 @@ exports[`<SmallMovieCard /> Should SmallMovieCard render correctly 1`] = `
   <div
     className="small-movie-card__image"
     data-id={1}
-    onClick={[Function]}
   >
     <video
       className="children-component"
@@ -21,7 +20,7 @@ exports[`<SmallMovieCard /> Should SmallMovieCard render correctly 1`] = `
     <a
       className="small-movie-card__link"
       data-id={1}
-      href="movie-page.html"
+      href="/movie-details/1"
       onClick={[Function]}
     >
       Movie title 1

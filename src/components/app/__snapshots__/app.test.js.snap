@@ -280,7 +280,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={1}
-              href="/movie-details/1"
+              href="/movie-page/1"
               onClick={[Function]}
             >
               Movie title 1
@@ -304,7 +304,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={2}
-              href="/movie-details/2"
+              href="/movie-page/2"
               onClick={[Function]}
             >
               Movie title 2
@@ -328,7 +328,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={3}
-              href="/movie-details/3"
+              href="/movie-page/3"
               onClick={[Function]}
             >
               Movie title 3
@@ -352,7 +352,7 @@ Array [
             <a
               className="small-movie-card__link"
               data-id={4}
-              href="/movie-details/4"
+              href="/movie-page/4"
               onClick={[Function]}
             >
               Movie title 4

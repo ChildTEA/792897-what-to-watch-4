@@ -17,8 +17,8 @@ const mockHistory = {
   }
 };
 
-describe(`<MoviePageDetails />`, () => {
-  it(`Should Main render correctly`, () => {
+describe(`<MoviePageReviews />`, () => {
+  it(`Should MoviePageReviews render correctly`, () => {
     const tree = renderer
       .create(
           <Router
@@ -37,7 +37,7 @@ describe(`<MoviePageDetails />`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`Should Main render correctly`, () => {
+  it(`Should MoviePageReviews render correctly`, () => {
     const tree = renderer
       .create(
           <Router

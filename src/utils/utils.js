@@ -9,5 +9,19 @@ const getUniqueObjectValues = (object) => {
   return uniqueValues;
 };
 
+const findMovieById = (movies, id) => {
+  const movieIndex = movies.findIndex((movie) => {
+    const movieId = movie.id.toString();
 
-export {extend, getUniqueObjectValues};
+    return movieId === id;
+  });
+
+  if (movieIndex < 0) {
+    return null;
+  }
+
+  return movies[movieIndex];
+};
+
+
+export {extend, findMovieById, getUniqueObjectValues};

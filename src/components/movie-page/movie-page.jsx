@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {moviesType} from "../../types/types.js";
-import {Link} from "react-router-dom";
 import {AppRoute} from "../../const/const.js";
+import {findMovieById} from "../../utils/utils.js";
+import {Link} from "react-router-dom";
+import {moviesType} from "../../types/types.js";
 
 
 const getRatingTextRepresentation = (rating) => {
@@ -20,19 +21,6 @@ const getRatingTextRepresentation = (rating) => {
   return `Bad`;
 };
 
-const findMovieById = (movies, id) => {
-  const movieIndex = movies.findIndex((movie) => {
-    const movieId = movie.id.toString();
-
-    return movieId === id;
-  });
-
-  if (movieIndex < 0) {
-    return null;
-  }
-
-  return movies[movieIndex];
-};
 
 const MoviePage = ({
   addToFavorites,

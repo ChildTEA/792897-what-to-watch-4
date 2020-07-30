@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {moviesType} from "../../types/types.js";
-import {Link} from "react-router-dom";
 import {AppRoute} from "../../const/const.js";
+import {findMovieById} from "../../utils/utils.js";
+import {Link} from "react-router-dom";
+import {moviesType} from "../../types/types.js";
 
 
 const formatTime = (timeInMinutes) => {
@@ -14,20 +15,6 @@ const formatTime = (timeInMinutes) => {
   const resultMinutes = minutes > 0 ? `${minutes}m` : ``;
 
   return resultHours + resultMinutes;
-};
-
-const findMovieById = (movies, id) => {
-  const movieIndex = movies.findIndex((movie) => {
-    const movieId = movie.id.toString();
-
-    return movieId === id;
-  });
-
-  if (movieIndex < 0) {
-    return null;
-  }
-
-  return movies[movieIndex];
 };
 
 
@@ -163,13 +150,28 @@ const MoviePageDetails = ({
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Overview</a>
+                    <Link
+                      to={`${AppRoute.MOVIE_PAGE}/${id}`}
+                      href="#" className="movie-nav__link"
+                    >
+                      Overview
+                    </Link>
                   </li>
                   <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Details</a>
+                    <Link
+                      to={`${AppRoute.MOVIE_DETAILS}/${id}`}
+                      className="movie-nav__link"
+                    >
+                      Details
+                    </Link>
                   </li>
                   <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
+                    <Link
+                      to={`${AppRoute.MOVIE_REVIEWS}/${id}`}
+                      className="movie-nav__link"
+                    >
+                      Reviews
+                    </Link>
                   </li>
                 </ul>
               </nav>

@@ -1,24 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {moviesType} from "../../types/types.js";
-import {Link} from "react-router-dom";
 import {AppRoute} from "../../const/const.js";
-
-
-const findMovieById = (movies, id) => {
-  const movieIndex = movies.findIndex((movie) => {
-    const movieId = movie.id.toString();
-
-    return movieId === id;
-  });
-
-  if (movieIndex < 0) {
-    return null;
-  }
-
-  return movies[movieIndex];
-};
+import {findMovieById} from "../../utils/utils.js";
+import {Link} from "react-router-dom";
+import {moviesType} from "../../types/types.js";
 
 
 const MoviePageReviews = ({

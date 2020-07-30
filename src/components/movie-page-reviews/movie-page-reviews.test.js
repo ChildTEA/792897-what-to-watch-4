@@ -20,18 +20,22 @@ const mockHistory = {
 describe(`<MoviePageReviews />`, () => {
   it(`Should Main render correctly`, () => {
     const tree = renderer
-      .create(
-          <Router
-            history={history}
-          >
-            <MoviePageReviews
-              addToFavorites={() => {}}
-              authorizationStatus={authorized}
-              movies={movies}
-              historyProps={mockHistory}
-            />
-          </Router>
-      )
+      .create((
+        <Router
+          history={history}
+        >
+          <MoviePageReviews
+            addToFavorites={() => {}}
+            authorizationStatus={authorized}
+            movies={movies}
+            historyProps={mockHistory}
+          />
+        </Router>
+      ), {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -39,18 +43,22 @@ describe(`<MoviePageReviews />`, () => {
 
   it(`Should Main render correctly`, () => {
     const tree = renderer
-      .create(
-          <Router
-            history={history}
-          >
-            <MoviePageReviews
-              addToFavorites={() => {}}
-              authorizationStatus={unauthorized}
-              movies={movies}
-              historyProps={mockHistory}
-            />
-          </Router>
-      )
+      .create((
+        <Router
+          history={history}
+        >
+          <MoviePageReviews
+            addToFavorites={() => {}}
+            authorizationStatus={unauthorized}
+            movies={movies}
+            historyProps={mockHistory}
+          />
+        </Router>
+      ), {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

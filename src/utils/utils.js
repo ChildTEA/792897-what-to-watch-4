@@ -23,5 +23,20 @@ const findMovieById = (movies, id) => {
   return movies[movieIndex];
 };
 
+const getSameGenreMovies = (movies, genre, maxCount = 4) => {
+  const sameGenreMovies = movies.filter((movie) => {
+    return movie.genre === genre;
+  });
 
-export {extend, findMovieById, getUniqueObjectValues};
+  if (!sameGenreMovies) {
+    return null;
+  }
+
+  if (sameGenreMovies.length > maxCount) {
+    return sameGenreMovies.slice(0, maxCount);
+  }
+
+  return sameGenreMovies;
+};
+
+export {extend, findMovieById, getSameGenreMovies, getUniqueObjectValues};

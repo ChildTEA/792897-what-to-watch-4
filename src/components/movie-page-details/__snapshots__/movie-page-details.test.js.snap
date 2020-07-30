@@ -404,97 +404,97 @@ Awesome Actress
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={1}
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={1}
+              href="/movie-page/1"
+              onClick={[Function]}
             >
-              Fantastic Beasts: The Crimes of Grindelwald
+              Movie title 1
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={2}
           >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="/img/bohemian-rhapsody.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={2}
+              href="/movie-page/2"
+              onClick={[Function]}
             >
-              Bohemian Rhapsody
+              Movie title 2
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={3}
           >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="/img/macbeth.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={3}
+              href="/movie-page/3"
+              onClick={[Function]}
             >
-              Macbeth
+              Movie title 3
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={4}
           >
-            <img
-              alt="Aviator"
-              height="175"
-              src="/img/aviator.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={4}
+              href="/movie-page/4"
+              onClick={[Function]}
             >
-              Aviator
+              Movie title 4
             </a>
           </h3>
         </article>
@@ -940,97 +940,97 @@ Awesome Actress
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={1}
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={1}
+              href="/movie-page/1"
+              onClick={[Function]}
             >
-              Fantastic Beasts: The Crimes of Grindelwald
+              Movie title 1
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={2}
           >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="/img/bohemian-rhapsody.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={2}
+              href="/movie-page/2"
+              onClick={[Function]}
             >
-              Bohemian Rhapsody
+              Movie title 2
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={3}
           >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="/img/macbeth.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={3}
+              href="/movie-page/3"
+              onClick={[Function]}
             >
-              Macbeth
+              Movie title 3
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
+            data-id={4}
           >
-            <img
-              alt="Aviator"
-              height="175"
-              src="/img/aviator.jpg"
-              width="280"
-            />
+            <video />
           </div>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              data-id={4}
+              href="/movie-page/4"
+              onClick={[Function]}
             >
-              Aviator
+              Movie title 4
             </a>
           </h3>
         </article>

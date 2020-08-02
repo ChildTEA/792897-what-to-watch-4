@@ -13,7 +13,7 @@ const findMovieById = (movies, id) => {
   const movieIndex = movies.findIndex((movie) => {
     const movieId = movie.id.toString();
 
-    return movieId === id;
+    return movieId === id.toString();
   });
 
   if (movieIndex < 0) {

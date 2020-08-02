@@ -2,27 +2,27 @@ import {extend} from "../../utils/utils.js";
 
 
 const initialState = {
-  currentPage: `index`,
+  currentMovie: null,
 };
 
 const ActionType = {
-  SET_CURRENT_PAGE: `SET_CURRENT_PAGE`,
+  SET_CURRENT_MOVIE: `SET_CURRENT_MOVIE`,
 };
 
 const ActionCreator = {
-  setCurrentPage: (pageID) => {
+  setCurrentMovie: (movieID) => {
     return {
-      type: ActionType.SET_CURRENT_PAGE,
-      payload: pageID,
+      type: ActionType.SET_CURRENT_MOVIE,
+      payload: movieID,
     };
   },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.SET_CURRENT_PAGE:
+    case ActionType.SET_CURRENT_MOVIE:
       return extend(state, {
-        currentPage: action.payload,
+        currentMovie: action.payload,
       });
   }
 

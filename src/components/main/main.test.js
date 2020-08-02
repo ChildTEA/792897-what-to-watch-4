@@ -37,6 +37,7 @@ describe(`<Main />`, () => {
               authorizationStatus={authorized}
               movies={fullMoviesDescriptions}
               promoMovie={PROMO_MOVIE}
+              onCardClick={() => {}}
             />
           </Router>
         </Provider>
@@ -68,6 +69,7 @@ describe(`<Main />`, () => {
               authorizationStatus={unauthorized}
               movies={fullMoviesDescriptions}
               promoMovie={PROMO_MOVIE}
+              onCardClick={() => {}}
             />
           </Router>
         </Provider>

@@ -21,6 +21,7 @@ describe(`<SmallMovieCard />`, () => {
             name={name}
             onActivation={() => {}}
             onDeactivation={() => {}}
+            onCardClick={() => {}}
           >
             {children}
           </SmallMovieCard>

@@ -34,8 +34,9 @@ describe(`<App />`, () => {
             allMovies={fullMoviesDescriptions}
             promoMovie={PROMO_MOVIE}
             login={() => {}}
-            currentPage={`index`}
+            currentMovie={null}
             moviesToShow={fullMoviesDescriptions}
+            onCardClick={() => {}}
           />
         </Provider>), {
         createNodeMock: () => {

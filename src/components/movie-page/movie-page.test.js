@@ -9,13 +9,8 @@ import history from "../../history.js";
 const movies = fullMoviesDescriptions;
 const authorized = AuthorizationStatus.AUTH;
 const unauthorized = AuthorizationStatus.NO_AUTH;
-const mockHistory = {
-  match: {
-    params: {
-      id: `1`,
-    }
-  }
-};
+const movieID = fullMoviesDescriptions[0].id;
+
 
 describe(`<MoviePage />`, () => {
   it(`Should MoviePage render correctly`, () => {
@@ -28,7 +23,8 @@ describe(`<MoviePage />`, () => {
             addToFavorites={() => {}}
             authorizationStatus={authorized}
             movies={movies}
-            historyProps={mockHistory}
+            movieID={movieID}
+            onCardClick={() => {}}
           />
         </Router>
       ), {
@@ -51,7 +47,8 @@ describe(`<MoviePage />`, () => {
             addToFavorites={() => {}}
             authorizationStatus={unauthorized}
             movies={movies}
-            historyProps={mockHistory}
+            movieID={movieID}
+            onCardClick={() => {}}
           />
         </Router>
       ), {

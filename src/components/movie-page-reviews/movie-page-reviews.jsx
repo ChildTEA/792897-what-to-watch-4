@@ -14,11 +14,11 @@ import {moviesType} from "../../types/types.js";
 const MoviePageReviews = ({
   addToFavorites,
   authorizationStatus,
-  historyProps,
   movies,
+  movieID,
+  onCardClick,
 }) => {
-  const MOVIE_ID = historyProps.match.params.id;
-  const movie = findMovieById(movies, MOVIE_ID);
+  const movie = findMovieById(movies, movieID);
 
   const SIMILAR_MOVIES_COUNT = 4;
   const similarMovies = getSameGenreMovies(movies, movie.genre, SIMILAR_MOVIES_COUNT);
@@ -35,6 +35,7 @@ const MoviePageReviews = ({
           name={similarMmovie.name}
           previewImage={similarMmovie.previewImage}
           videoPreviewSrc={similarMmovie.videoPreviewSrc}
+          onCardClick={onCardClick}
         />
       );
     });
@@ -70,7 +71,7 @@ const MoviePageReviews = ({
         </svg>
       </div>
 
-      <section className="movie-card movie-card--full" data-id={MOVIE_ID}>
+      <section className="movie-card movie-card--full" data-id={movieID}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={movie.backgroundImage} alt={movie.name} />
@@ -124,7 +125,7 @@ const MoviePageReviews = ({
                   <span>Play</span>
                 </button>
                 <button
-                  onClick={() => addToFavorites(MOVIE_ID, movie.isFavorite)}
+                  onClick={() => addToFavorites(movieID, movie.isFavorite)}
                   className="btn btn--list movie-card__button"
                   type="button"
                 >
@@ -155,7 +156,7 @@ const MoviePageReviews = ({
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_PAGE}/${MOVIE_ID}`}
+                      to={`${AppRoute.MOVIE_PAGE}/${movieID}`}
                       href="#" className="movie-nav__link"
                     >
                       Overview
@@ -163,7 +164,7 @@ const MoviePageReviews = ({
                   </li>
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_DETAILS}/${MOVIE_ID}`}
+                      to={`${AppRoute.MOVIE_DETAILS}/${movieID}`}
                       className="movie-nav__link"
                     >
                       Details
@@ -171,7 +172,7 @@ const MoviePageReviews = ({
                   </li>
                   <li className="movie-nav__item movie-nav__item--active">
                     <Link
-                      to={`${AppRoute.MOVIE_REVIEWS}/${MOVIE_ID}`}
+                      to={`${AppRoute.MOVIE_REVIEWS}/${movieID}`}
                       className="movie-nav__link"
                     >
                       Reviews
@@ -284,8 +285,9 @@ const MoviePageReviews = ({
 MoviePageReviews.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  historyProps: PropTypes.object.isRequired,
   movies: moviesType.isRequired,
+  movieID: PropTypes.number.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 

@@ -25,11 +25,11 @@ const formatTime = (timeInMinutes) => {
 const MoviePageDetails = ({
   addToFavorites,
   authorizationStatus,
-  historyProps,
   movies,
+  movieID,
+  onCardClick,
 }) => {
-  const MOVIE_ID = historyProps.match.params.id;
-  const movie = findMovieById(movies, MOVIE_ID);
+  const movie = findMovieById(movies, movieID);
 
   const SIMILAR_MOVIES_COUNT = 4;
   const formatedRunTime = formatTime(movie.runTime);
@@ -47,6 +47,7 @@ const MoviePageDetails = ({
           name={similarMmovie.name}
           previewImage={similarMmovie.previewImage}
           videoPreviewSrc={similarMmovie.videoPreviewSrc}
+          onCardClick={onCardClick}
         />
       );
     });
@@ -82,7 +83,7 @@ const MoviePageDetails = ({
         </svg>
       </div>
 
-      <section className="movie-card movie-card--full" data-id={MOVIE_ID}>
+      <section className="movie-card movie-card--full" data-id={movieID}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={movie.backgroundImage} alt={movie.name} />
@@ -113,7 +114,8 @@ const MoviePageDetails = ({
                 </div> :
                 <Link
                   to={AppRoute.LOGIN}
-                  className="user-block__link">
+                  className="user-block__link"
+                >
                     Sign in
                 </Link>
               }
@@ -136,7 +138,7 @@ const MoviePageDetails = ({
                   <span>Play</span>
                 </button>
                 <button
-                  onClick={() => addToFavorites(MOVIE_ID, movie.isFavorite)}
+                  onClick={() => addToFavorites(movieID, movie.isFavorite)}
                   className="btn btn--list movie-card__button"
                   type="button"
                 >
@@ -167,7 +169,7 @@ const MoviePageDetails = ({
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_PAGE}/${MOVIE_ID}`}
+                      to={`${AppRoute.MOVIE_PAGE}/${movieID}`}
                       href="#" className="movie-nav__link"
                     >
                       Overview
@@ -175,7 +177,7 @@ const MoviePageDetails = ({
                   </li>
                   <li className="movie-nav__item movie-nav__item--active">
                     <Link
-                      to={`${AppRoute.MOVIE_DETAILS}/${MOVIE_ID}`}
+                      to={`${AppRoute.MOVIE_DETAILS}/${movieID}`}
                       className="movie-nav__link"
                     >
                       Details
@@ -183,7 +185,7 @@ const MoviePageDetails = ({
                   </li>
                   <li className="movie-nav__item">
                     <Link
-                      to={`${AppRoute.MOVIE_REVIEWS}/${MOVIE_ID}`}
+                      to={`${AppRoute.MOVIE_REVIEWS}/${movieID}`}
                       className="movie-nav__link"
                     >
                       Reviews
@@ -258,8 +260,9 @@ const MoviePageDetails = ({
 MoviePageDetails.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  historyProps: PropTypes.object.isRequired,
   movies: moviesType.isRequired,
+  movieID: PropTypes.number.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 

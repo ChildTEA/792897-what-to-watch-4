@@ -14,8 +14,10 @@ const Main = ({
   authorizationStatus,
   movies,
   promoMovie,
+  onCardClick,
 }) => {
   const filterTypes = FilterTypes;
+
 
   return (
     <React.Fragment>
@@ -46,7 +48,8 @@ const Main = ({
               </div> :
               <Link
                 to={AppRoute.LOGIN}
-                className="user-block__link">
+                className="user-block__link"
+              >
                   Sign in
               </Link>
             }
@@ -104,6 +107,7 @@ const Main = ({
 
           <MoviesList
             movies={movies}
+            onCardClick={onCardClick}
           />
 
           <div className="catalog__more">
@@ -135,6 +139,7 @@ Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   movies: moviesType.isRequired,
   promoMovie: movieType.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 

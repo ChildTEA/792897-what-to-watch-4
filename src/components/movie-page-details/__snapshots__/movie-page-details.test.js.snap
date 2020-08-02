@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MoviePageReviews /> Should MoviePageReviews render correctly 1`] = `
+exports[`<MoviePageDetails /> Should MoviePageDetails render correctly 1`] = `
 Array [
   <div
     className="visually-hidden"
@@ -112,7 +112,7 @@ Array [
   </div>,
   <section
     className="movie-card movie-card--full"
-    data-id="1"
+    data-id={1}
   >
     <div
       className="movie-card__hero"
@@ -544,7 +544,7 @@ Awesome Actress
 ]
 `;
 
-exports[`<MoviePageReviews /> Should MoviePageReviews render correctly 2`] = `
+exports[`<MoviePageDetails /> Should MoviePageReviews render correctly 1`] = `
 Array [
   <div
     className="visually-hidden"
@@ -656,7 +656,7 @@ Array [
   </div>,
   <section
     className="movie-card movie-card--full"
-    data-id="1"
+    data-id={1}
   >
     <div
       className="movie-card__hero"

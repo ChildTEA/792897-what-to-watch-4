@@ -2,24 +2,24 @@ import {reducer, ActionType, ActionCreator} from "./navigation.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {})).toEqual({
-    currentPage: `index`,
+    currentMovie: null,
   });
 });
 
 it(`Reducer should set currentPage correctly`, () => {
-  expect(reducer({currentPage: `index`}, {
-    type: ActionType.SET_CURRENT_PAGE,
-    payload: `001`,
+  expect(reducer({currentMovie: null}, {
+    type: ActionType.SET_CURRENT_MOVIE,
+    payload: `1`,
   })).toEqual({
-    currentPage: `001`,
+    currentMovie: `1`,
   });
 });
 
 describe(`Action creators work correctly`, () => {
-  it(`Action creator for setting current page should return correct object`, () => {
-    expect(ActionCreator.setCurrentPage(`003`)).toEqual({
-      type: ActionType.SET_CURRENT_PAGE,
-      payload: `003`,
+  it(`Action creator for setting current movie should return correct object`, () => {
+    expect(ActionCreator.setCurrentMovie(`3`)).toEqual({
+      type: ActionType.SET_CURRENT_MOVIE,
+      payload: `3`,
     });
   });
 });

@@ -9,16 +9,10 @@ import history from "../../history.js";
 const movies = fullMoviesDescriptions;
 const authorized = AuthorizationStatus.AUTH;
 const unauthorized = AuthorizationStatus.NO_AUTH;
-const mockHistory = {
-  match: {
-    params: {
-      id: `1`,
-    }
-  }
-};
+const movieID = fullMoviesDescriptions[0].id;
 
 describe(`<MoviePageReviews />`, () => {
-  it(`Should Main render correctly`, () => {
+  it(`Should MoviePageReviews render correctly`, () => {
     const tree = renderer
       .create((
         <Router
@@ -28,7 +22,8 @@ describe(`<MoviePageReviews />`, () => {
             addToFavorites={() => {}}
             authorizationStatus={authorized}
             movies={movies}
-            historyProps={mockHistory}
+            movieID={movieID}
+            onCardClick={() => {}}
           />
         </Router>
       ), {
@@ -41,7 +36,7 @@ describe(`<MoviePageReviews />`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`Should Main render correctly`, () => {
+  it(`Should MoviePageReviews render correctly`, () => {
     const tree = renderer
       .create((
         <Router
@@ -51,7 +46,8 @@ describe(`<MoviePageReviews />`, () => {
             addToFavorites={() => {}}
             authorizationStatus={unauthorized}
             movies={movies}
-            historyProps={mockHistory}
+            movieID={movieID}
+            onCardClick={() => {}}
           />
         </Router>
       ), {

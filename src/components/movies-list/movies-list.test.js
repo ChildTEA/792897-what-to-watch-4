@@ -17,6 +17,7 @@ describe(`<MoviesList />`, () => {
         >
           <MoviesList
             movies={movies}
+            onCardClick={() => {}}
           />
         </Router>
       ), {

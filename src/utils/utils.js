@@ -9,5 +9,34 @@ const getUniqueObjectValues = (object) => {
   return uniqueValues;
 };
 
+const findMovieById = (movies, id) => {
+  const movieIndex = movies.findIndex((movie) => {
+    const movieId = movie.id.toString();
 
-export {extend, getUniqueObjectValues};
+    return movieId === id.toString();
+  });
+
+  if (movieIndex < 0) {
+    return null;
+  }
+
+  return movies[movieIndex];
+};
+
+const getSameGenreMovies = (movies, genre, maxCount = 4) => {
+  const sameGenreMovies = movies.filter((movie) => {
+    return movie.genre === genre;
+  });
+
+  if (!sameGenreMovies) {
+    return null;
+  }
+
+  if (sameGenreMovies.length > maxCount) {
+    return sameGenreMovies.slice(0, maxCount);
+  }
+
+  return sameGenreMovies;
+};
+
+export {extend, findMovieById, getSameGenreMovies, getUniqueObjectValues};

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePageDetails from "./movie-page-details.jsx";
+import MoviePage from "./movie-page.jsx";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {fullMoviesDescriptions} from "../../const/tests.js";
 import {Router} from "react-router-dom";
@@ -11,14 +11,15 @@ const authorized = AuthorizationStatus.AUTH;
 const unauthorized = AuthorizationStatus.NO_AUTH;
 const movieID = fullMoviesDescriptions[0].id;
 
-describe(`<MoviePageDetails />`, () => {
-  it(`Should MoviePageDetails render correctly`, () => {
+
+describe(`<MoviePage />`, () => {
+  it(`Should MoviePage render correctly`, () => {
     const tree = renderer
       .create((
         <Router
           history={history}
         >
-          <MoviePageDetails
+          <MoviePage
             addToFavorites={() => {}}
             authorizationStatus={authorized}
             movies={movies}
@@ -36,13 +37,13 @@ describe(`<MoviePageDetails />`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`Should MoviePageReviews render correctly`, () => {
+  it(`Should Main render correctly`, () => {
     const tree = renderer
       .create((
         <Router
           history={history}
         >
-          <MoviePageDetails
+          <MoviePage
             addToFavorites={() => {}}
             authorizationStatus={unauthorized}
             movies={movies}

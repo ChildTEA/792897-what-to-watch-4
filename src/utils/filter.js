@@ -59,7 +59,7 @@ const getMoviesByFilterType = (movies, filterType) => {
     case FilterType.THRILLER:
       return getThrillerMovies(movies);
     default:
-      return Object.assign({}, movies);
+      return null;
   }
 };
 

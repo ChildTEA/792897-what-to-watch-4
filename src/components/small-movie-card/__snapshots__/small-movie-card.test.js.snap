@@ -20,7 +20,7 @@ exports[`<SmallMovieCard /> Should SmallMovieCard render correctly 1`] = `
     <a
       className="small-movie-card__link"
       data-id={1}
-      href="/movie-details/1"
+      href="/movie-page/1"
       onClick={[Function]}
     >
       Movie title 1

@@ -11,9 +11,9 @@ class SmallMovieCard extends PureComponent {
       children,
       name,
       onActivation,
+      onCardClick,
       onDeactivation,
     } = this.props;
-
 
     return (
       <article
@@ -29,10 +29,10 @@ class SmallMovieCard extends PureComponent {
         </div>
         <h3 className="small-movie-card__title">
           <Link
-            to={`${AppRoute.MOVIE_DETAILS}/${id}`}
+            to={`${AppRoute.MOVIE_PAGE}/${id}`}
             className="small-movie-card__link"
-            href="movie-page.html"
             data-id={id}
+            onClick={onCardClick}
           >
             {name}
           </Link>
@@ -51,6 +51,7 @@ SmallMovieCard.propTypes = {
   ]).isRequired,
   name: PropTypes.string.isRequired,
   onActivation: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   onDeactivation: PropTypes.func.isRequired,
 };
 
